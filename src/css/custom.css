@@ -1,0 +1,118 @@
+:root {
+  --ot-rail-background: oklch(0.95 0.015 248);
+  --ifm-color-primary: #0073cf;
+  --ifm-color-primary-dark: #0067ba;
+  --ifm-color-primary-darker: #0061af;
+  --ifm-color-primary-darkest: #00508f;
+  --ifm-color-primary-light: #1780d9;
+  --ifm-color-primary-lighter: #2387de;
+  --ifm-color-primary-lightest: #4c9fe5;
+  --ifm-background-color: oklch(1 0 0);
+  --ifm-background-surface-color: oklch(0.968 0.007 247.896);
+  --ifm-navbar-background-color: oklch(1 0 0 / 0.94);
+  --ifm-footer-background-color: oklch(0.208 0.042 265.755);
+  --ifm-font-color-base: oklch(0.129 0.042 264.695);
+  --ifm-font-color-secondary: oklch(0.554 0.046 257.417);
+  --ifm-heading-color: oklch(0.129 0.042 264.695);
+  --ifm-menu-color-background-active: oklch(0.968 0.007 247.896);
+  --ifm-menu-color-background-hover: oklch(0.968 0.007 247.896);
+  --ifm-toc-border-color: oklch(0.929 0.013 255.508);
+  --ifm-color-emphasis-200: oklch(0.929 0.013 255.508);
+  --ifm-color-emphasis-300: oklch(0.929 0.013 255.508);
+  --ifm-color-emphasis-700: oklch(0.554 0.046 257.417);
+  --ifm-color-emphasis-800: oklch(0.208 0.042 265.755);
+  --ifm-code-font-size: 95%;
+  --ifm-code-background: oklch(0.968 0.007 247.896);
+  --ifm-global-radius: 0.625rem;
+  --docusaurus-highlighted-code-line-bg: oklch(0.968 0.007 247.896);
+}
+
+[data-theme='dark'] {
+  --ot-rail-background: oklch(0.18 0.03 262);
+  --ifm-color-primary: #4c9fe5;
+  --ifm-color-primary-dark: #2990e0;
+  --ifm-color-primary-darker: #1788de;
+  --ifm-color-primary-darkest: #006fcb;
+  --ifm-color-primary-light: #6faeea;
+  --ifm-color-primary-lighter: #81b6ec;
+  --ifm-color-primary-lightest: #b5d3f3;
+  --ifm-background-color: oklch(0.129 0.042 264.695);
+  --ifm-background-surface-color: oklch(0.208 0.042 265.755);
+  --ifm-navbar-background-color: oklch(0.129 0.042 264.695 / 0.94);
+  --ifm-footer-background-color: oklch(0.208 0.042 265.755);
+  --ifm-font-color-base: oklch(0.984 0.003 247.858);
+  --ifm-font-color-secondary: oklch(0.704 0.04 256.788);
+  --ifm-heading-color: oklch(0.984 0.003 247.858);
+  --ifm-menu-color-background-active: oklch(0.279 0.041 260.031);
+  --ifm-menu-color-background-hover: oklch(0.279 0.041 260.031);
+  --ifm-toc-border-color: oklch(1 0 0 / 0.1);
+  --ifm-color-emphasis-200: oklch(1 0 0 / 0.1);
+  --ifm-color-emphasis-300: oklch(1 0 0 / 0.15);
+  --ifm-color-emphasis-700: oklch(0.704 0.04 256.788);
+  --ifm-color-emphasis-800: oklch(0.929 0.013 255.508);
+  --ifm-code-background: oklch(0.279 0.041 260.031);
+  --docusaurus-highlighted-code-line-bg: oklch(0.279 0.041 260.031);
+}
+
+.navbar {
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+  overflow: hidden;
+}
+
+@media (min-width: 997px) {
+  .navbar::before {
+    background: var(--ot-rail-background);
+    content: '';
+    inset: 0 auto 0 0;
+    position: absolute;
+    width: var(--doc-sidebar-width);
+    z-index: 0;
+  }
+
+  .navbar::after {
+    background: var(--ifm-toc-border-color);
+    content: '';
+    inset: 0 auto 0 var(--doc-sidebar-width);
+    position: absolute;
+    width: 1px;
+    z-index: 1;
+  }
+
+  .navbar__inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  .theme-doc-sidebar-container {
+    background: var(--ot-rail-background);
+  }
+}
+
+.footer {
+  padding: 1rem 1.5rem;
+  color: var(--ifm-font-color-secondary);
+  background: var(--ifm-background-color);
+  border-top: 1px solid var(--ifm-toc-border-color);
+}
+
+.footer__links {
+  display: none;
+}
+
+.footer__copyright {
+  font-size: 0.875rem;
+  margin-top: 0;
+  text-align: left;
+}
+
+.pagination-nav__link,
+.card {
+  border-color: var(--ifm-toc-border-color);
+  background: var(--ifm-background-surface-color);
+}
+
+.table-of-contents,
+.theme-doc-sidebar-container {
+  border-color: var(--ifm-toc-border-color);
+}
