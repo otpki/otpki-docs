@@ -1,0 +1,9 @@
+{
+  "label": "PKCS#11 Proxy",
+  "link": {
+    "type": "doc",
+    "id": "operations/issuance-and-revocation/key-management/pkcs11-proxy/index"
+  },
+  "collapsible": true,
+  "collapsed": true
+}

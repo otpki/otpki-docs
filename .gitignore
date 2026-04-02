@@ -9,6 +9,7 @@
 /.cache-loader
 /.eslintcache
 /*.tsbuildinfo
+/static/openapi/
 
 # Misc
 .DS_Store

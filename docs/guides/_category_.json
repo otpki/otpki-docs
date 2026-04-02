@@ -1,0 +1,9 @@
+{
+  "label": "Guides",
+  "link": {
+    "type": "doc",
+    "id": "guides/index"
+  },
+  "collapsible": true,
+  "collapsed": true
+}
