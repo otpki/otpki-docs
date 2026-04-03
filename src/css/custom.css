@@ -57,7 +57,24 @@
 .navbar {
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--ifm-toc-border-color);
-  overflow: hidden;
+  overflow: visible;
+}
+
+.ot-website-link {
+  align-items: center;
+  display: inline-flex;
+  padding-left: 0.25rem;
+  padding-right: 0;
+}
+
+.ot-website-link:hover {
+  opacity: 0.9;
+}
+
+.ot-website-logo {
+  display: block;
+  height: 1.4rem;
+  width: auto;
 }
 
 @media (min-width: 997px) {

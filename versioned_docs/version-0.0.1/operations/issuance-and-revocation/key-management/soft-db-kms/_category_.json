@@ -1,0 +1,9 @@
+{
+  "label": "Soft DB KMS",
+  "link": {
+    "type": "doc",
+    "id": "operations/issuance-and-revocation/key-management/soft-db-kms/index"
+  },
+  "collapsible": true,
+  "collapsed": true
+}

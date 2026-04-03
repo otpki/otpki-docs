@@ -2,6 +2,188 @@
   "docsSidebar": [
     "intro",
     "getting-started",
-    "reference"
+    {
+      "type": "category",
+      "label": "Operations",
+      "link": {
+        "type": "doc",
+        "id": "operations/index"
+      },
+      "collapsible": true,
+      "collapsed": true,
+      "items": [
+        {
+          "type": "category",
+          "label": "Administration",
+          "link": {
+            "type": "doc",
+            "id": "operations/administration/index"
+          },
+          "collapsible": true,
+          "collapsed": true,
+          "items": [
+            "operations/administration/identity-management",
+            "operations/administration/permissions",
+            "operations/administration/identity-providers",
+            {
+              "type": "category",
+              "label": "Approval Workflows",
+              "link": {
+                "type": "doc",
+                "id": "operations/administration/approval-workflows/index"
+              },
+              "collapsible": true,
+              "collapsed": true,
+              "items": [
+                "operations/administration/approval-workflows/approval-profiles",
+                "operations/administration/approval-workflows/enrollment-requests",
+                "operations/administration/approval-workflows/issuance-requests"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "label": "Issuance and Revocation",
+          "link": {
+            "type": "doc",
+            "id": "operations/issuance-and-revocation/index"
+          },
+          "collapsible": true,
+          "collapsed": true,
+          "items": [
+            "operations/issuance-and-revocation/certificate-authorities",
+            "operations/issuance-and-revocation/certificates",
+            "operations/issuance-and-revocation/certificate-profiles",
+            {
+              "type": "category",
+              "label": "Key Management",
+              "link": {
+                "type": "doc",
+                "id": "operations/issuance-and-revocation/key-management/index"
+              },
+              "collapsible": true,
+              "collapsed": true,
+              "items": [
+                "operations/issuance-and-revocation/key-management/key-configurations",
+                "operations/issuance-and-revocation/key-management/keys"
+              ]
+            },
+            "operations/issuance-and-revocation/certificate-extensions",
+            "operations/issuance-and-revocation/extended-key-usages",
+            {
+              "type": "category",
+              "label": "Publishing",
+              "link": {
+                "type": "doc",
+                "id": "operations/issuance-and-revocation/publishing/index"
+              },
+              "collapsible": true,
+              "collapsed": true,
+              "items": [
+                "operations/issuance-and-revocation/publishing/certificate-publishers",
+                "operations/issuance-and-revocation/publishing/crl-publishers"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "label": "Enrollment",
+          "link": {
+            "type": "doc",
+            "id": "operations/enrollment/index"
+          },
+          "collapsible": true,
+          "collapsed": true,
+          "items": [
+            "operations/enrollment/end-entities",
+            "operations/enrollment/end-entity-profiles",
+            {
+              "type": "category",
+              "label": "Protocols",
+              "link": {
+                "type": "doc",
+                "id": "operations/enrollment/protocols/index"
+              },
+              "collapsible": true,
+              "collapsed": true,
+              "items": [
+                "operations/enrollment/protocols/acme",
+                "operations/enrollment/protocols/cmp",
+                "operations/enrollment/protocols/est",
+                "operations/enrollment/protocols/microsoft-auto-enrollment",
+                "operations/enrollment/protocols/scep"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "label": "Validation",
+          "link": {
+            "type": "doc",
+            "id": "operations/validation/index"
+          },
+          "collapsible": true,
+          "collapsed": true,
+          "items": [
+            "operations/validation/ocsp",
+            "operations/validation/crl"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Integration",
+      "link": {
+        "type": "doc",
+        "id": "integration/index"
+      },
+      "collapsible": true,
+      "collapsed": true,
+      "items": [
+        "integration/pkcs11-hsms",
+        "integration/identity-lifecycle-management"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Guides",
+      "link": {
+        "type": "doc",
+        "id": "guides/index"
+      },
+      "collapsible": true,
+      "collapsed": true,
+      "items": [
+        "guides/basic-setup-guide"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Troubleshooting",
+      "link": {
+        "type": "doc",
+        "id": "troubleshooting/index"
+      },
+      "collapsible": true,
+      "collapsed": true,
+      "items": []
+    },
+    {
+      "type": "category",
+      "label": "References",
+      "link": {
+        "type": "doc",
+        "id": "reference/index"
+      },
+      "collapsible": true,
+      "collapsed": true,
+      "items": [
+        "reference/api-documentation"
+      ]
+    }
   ]
 }

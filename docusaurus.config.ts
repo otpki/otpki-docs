@@ -4,9 +4,12 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const require = createRequire(import.meta.url);
-const {version: docsVersion} = require('./package.json') as {version: string};
-const uiBaseUrl = (process.env.OTPKI_UI_BASE_URL ?? 'https://localhost:5173/ui').replace(/\/$/, '');
-const apiDocsUrl = `${uiBaseUrl}/docs/api`;
+const {execSync} = require('node:child_process') as typeof import('node:child_process');
+const protobufHash = execSync('git -C external/otpki-protobuf rev-parse --short HEAD', {
+  cwd: __dirname,
+  encoding: 'utf8',
+}).trim();
+const displayVersion = '0.0.2-dev';
 
 const config: Config = {
   title: 'Omni Trust Public Key Infrastructure',
@@ -39,7 +42,7 @@ const config: Config = {
           lastVersion: 'current',
           versions: {
             current: {
-              label: '0.0.2-dev',
+              label: displayVersion,
             },
           },
         },
@@ -62,21 +65,27 @@ const config: Config = {
       },
       items: [
         {
-          href: apiDocsUrl,
-          label: 'API Reference',
+          type: 'docsVersionDropdown',
+          position: 'right',
+          dropdownActiveClassDisabled: true,
+        },
+        {
+          to: '/docs/reference/api-documentation',
+          label: 'API Documentation',
           position: 'right',
         },
         {
-          href: 'https://github.com/otpki-docs',
-          label: 'Docs Repo',
+          type: 'html',
           position: 'right',
+          value:
+            '<a class="navbar__item ot-website-link" href="https://omnitrust.com/" target="_blank" rel="noreferrer" aria-label="OmniTrust website"><img class="ot-website-logo" src="/img/ot-logo-color.svg" alt="OmniTrust" /></a>',
         },
       ],
     },
     footer: {
       style: 'dark',
       links: [],
-      copyright: `OTPKI • ${docsVersion} HASH:local • Copyright © ${new Date().getFullYear()} OmniTrust Security LLC. All rights reserved.`,
+      copyright: `OTPKI • ${displayVersion} HASH:${protobufHash} • Copyright © ${new Date().getFullYear()} OmniTrust Security LLC. All rights reserved.`,
     },
     prism: {
       theme: prismThemes.github,

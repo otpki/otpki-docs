@@ -1,0 +1,10 @@
+version: v2
+
+plugins:
+  - local: protoc-gen-connect-openapi
+    out: static/openapi/current
+
+inputs:
+  - directory: external/otpki-protobuf/proto
+    paths:
+      - external/otpki-protobuf/proto/otpki/public

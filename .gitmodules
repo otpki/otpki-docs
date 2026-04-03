@@ -1,0 +1,3 @@
+[submodule "external/otpki-protobuf"]
+	path = external/otpki-protobuf
+	url = git@github.com:otpki/otpki-protobuf.git

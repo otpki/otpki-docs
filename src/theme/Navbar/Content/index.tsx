@@ -57,6 +57,11 @@ function ActiveDocTitle() {
   const [pageTitle, setPageTitle] = useState<string>('');
 
   useEffect(() => {
+    if (pathname === '/') {
+      setPageTitle('Welcome to OmniTrust PKI');
+      return;
+    }
+
     if (!pathname.startsWith('/docs')) {
       setPageTitle('');
       return;
