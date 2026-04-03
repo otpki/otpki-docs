@@ -4,10 +4,9 @@ hide_title: true
 hide_table_of_contents: true
 ---
 
-This section is reserved for OTPKI key management.
+Manage OTPKI key configurations and keys.
 
 ## Key Management Areas
 
-- [AWS KMS](./aws-kms)
-- [PKCS#11 Proxy](./pkcs11-proxy)
-- [Soft DB KMS](./soft-db-kms)
+- [Key Configurations](./key-configurations)
+- [Keys](./keys)

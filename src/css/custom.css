@@ -133,3 +133,38 @@
 .theme-doc-sidebar-container {
   border-color: var(--ifm-toc-border-color);
 }
+
+.theme-doc-markdown {
+  line-height: 1.55;
+}
+
+.theme-doc-markdown p,
+.theme-doc-markdown li {
+  line-height: 1.5;
+}
+
+.theme-doc-markdown h2 {
+  margin-bottom: 0.5rem;
+  margin-top: 1.75rem;
+}
+
+.theme-doc-markdown h3 {
+  margin-bottom: 0.35rem;
+  margin-top: 1.1rem;
+}
+
+.theme-doc-markdown p + h2,
+.theme-doc-markdown ul + h2,
+.theme-doc-markdown ol + h2 {
+  margin-top: 1.5rem;
+}
+
+.theme-doc-markdown p {
+  margin-bottom: 0.7rem;
+}
+
+.theme-doc-markdown ul,
+.theme-doc-markdown ol {
+  margin-bottom: 0.85rem;
+  margin-top: 0.45rem;
+}
