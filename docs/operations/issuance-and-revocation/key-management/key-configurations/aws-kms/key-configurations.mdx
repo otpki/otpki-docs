@@ -1,0 +1,81 @@
+---
+title: AWS KMS Key Configurations
+hide_title: true
+hide_table_of_contents: true
+---
+
+import basicSettingsScreenshot from './key-configuration-basic-settings-section.png';
+import securityEncryptionKeyScreenshot from '../../_shared/key-configuration-security-encryption-key-section.png';
+import activationScreenshot from '../../_shared/key-configuration-activation-section.png';
+import driverConfigurationScreenshot from './key-configuration-driver-configuration-section.png';
+import DocScreenshot from '@site/src/components/docs/DocScreenshot';
+import {
+  ActivationSection,
+  BasicKeyConfigurationSection,
+  SecuritySection,
+} from '../../_shared/basic-key-configuration-section.mdx';
+
+<BasicKeyConfigurationSection
+  pluginName="AWS KMS"
+  driverValue="KEY_DRIVER_TYPE_AWSKMS"
+  screenshot={basicSettingsScreenshot}
+/>
+
+## Driver Configuration
+
+The driver configuration section contains the AWS-specific connection settings
+that OTPKI uses when working with AWS KMS.
+
+For AWS KMS, the driver configuration entered on this page, including the
+selected region, optional custom endpoint, optional profile name, and any
+static credentials or session token, is stored by OTPKI and encrypted at rest.
+
+<DocScreenshot
+  alt="AWS KMS key configuration driver configuration settings"
+  src={driverConfigurationScreenshot}
+/>
+
+### Region
+
+Use **Region** to choose the AWS region where OTPKI should connect to AWS KMS.
+
+### Endpoint
+
+Use **Endpoint** when you want OTPKI to connect to a custom AWS KMS endpoint
+instead of the default AWS service endpoint. This is mainly useful for local or
+test environments.
+
+### Profile
+
+Use **Profile** when you want OTPKI to use a named AWS profile from the local
+AWS configuration on the server.
+
+### Access Key Id
+
+Use **Access Key Id** when you want to provide static AWS credentials directly
+in the configuration.
+
+### Secret Access Key
+
+Use **Secret Access Key** together with the access key ID when you are using
+static AWS credentials.
+
+### Session Token
+
+Use **Session Token** when the AWS credentials come from a temporary session,
+such as credentials issued through AWS STS.
+
+<SecuritySection
+  pluginName="AWS KMS"
+  screenshot={securityEncryptionKeyScreenshot}
+/>
+
+When an **Encryption Key** is selected, OTPKI uses it to encrypt the key data
+stored for each AWS KMS key. This includes the remote key identifier, the key
+ARN, and the AWS region for the key.
+
+<ActivationSection screenshot={activationScreenshot} />
+
+For AWS KMS, activation adds an OTPKI-managed unlock step before the
+configuration can be used. This gives you an extra password-style control on
+top of the AWS connection settings.

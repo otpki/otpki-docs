@@ -10,6 +10,7 @@ const outputDir = resolve(repoRoot, 'static/openapi');
 const versionedOpenApiRoot = resolve(repoRoot, 'versioned_openapi');
 const currentOutputDir = resolve(outputDir, 'current');
 const generatedCurrentRoot = resolve(currentOutputDir, 'otpki/public');
+const protobufProtoRoot = resolve(protobufRoot, 'proto');
 
 const run = (command, args, options = {}) => {
   const result = spawnSync(command, args, {
@@ -23,8 +24,35 @@ const run = (command, args, options = {}) => {
   }
 };
 
+const hasProtoFiles = (directory) => {
+  for (const entry of readdirSync(directory, {withFileTypes: true})) {
+    const entryPath = resolve(directory, entry.name);
+
+    if (entry.isDirectory()) {
+      if (hasProtoFiles(entryPath)) {
+        return true;
+      }
+      continue;
+    }
+
+    if (entry.isFile() && entry.name.endsWith('.proto')) {
+      return true;
+    }
+  }
+
+  return false;
+};
+
 if (!existsSync(protobufRoot)) {
   console.error('Missing external/otpki-protobuf submodule. Run `git submodule update --init --recursive` first.');
+  process.exit(1);
+}
+
+if (!existsSync(protobufProtoRoot) || !hasProtoFiles(protobufProtoRoot)) {
+  console.error(
+    'The external/otpki-protobuf submodule is present but does not contain any .proto files. ' +
+      'Run `git submodule update --init --recursive` to populate it before generating OpenAPI.',
+  );
   process.exit(1);
 }
 
