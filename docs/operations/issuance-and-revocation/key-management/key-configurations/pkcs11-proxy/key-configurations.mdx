@@ -40,16 +40,15 @@ rest.
 
 ### Server Address
 
-Use **Server Address** to specify the PKCS#11 Proxy server that OTPKI should
-connect to.
+Use **Server Address** to specify the PKCS#11 Proxy server that OTPKI should connect to.
+This must resolve to the `listen_address` configured on the proxy host.
 
 ### Config Id
 
-Use **Config Id** to provide the server-side HSM configuration identifier that
-the PKCS#11 Proxy service should use. Leave this blank if the proxy server does
-not require a specific configuration ID.  Configuration IDs can be used to 
-reference multiple slots on an HSM that have different authentication and policy, 
-while still using a single PKCS#11 Proxy server instance.
+Use **Config Id** to select which HSM slot configuration on the proxy OTPKI should use.
+The value must match the `id` of an entry under `hsm_configs` in the proxy's config file.
+Leave this blank to use the slot the proxy has marked as `default: true`.
+Configuration IDs let a single PKCS#11 Proxy instance expose multiple HSM slots, each identified by `slot_id` or token `label`.
 
 <SecuritySection
   pluginName="PKCS#11 Proxy"
