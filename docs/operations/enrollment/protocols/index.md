@@ -4,12 +4,10 @@ hide_title: true
 hide_table_of_contents: true
 ---
 
-This section is reserved for protocol-driven enrollment in OTPKI.
+## Protocols
 
-## Protocol Areas
-
-- [ACME](./acme)
-- [CMP](./cmp)
-- [EST](./est)
-- [Microsoft Auto Enrollment](./microsoft-auto-enrollment)
-- [SCEP](./scep)
+- [ACME](./acme/protocol-configurations)
+- [CMP](./cmp/protocol-configuration)
+- [EST](./est/protocol-configuration)
+- [MS Auto Enrollment](./msae/protocol-configurations)
+- [SCEP](./scep/protocol-configurations)
