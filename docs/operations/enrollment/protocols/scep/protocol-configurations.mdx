@@ -1,0 +1,119 @@
+---
+title: SCEP Protocol Configuration
+hide_title: true
+hide_table_of_contents: true
+---
+
+import DocScreenshot from '@site/src/components/docs/DocScreenshot';
+
+import {
+    ProtocolConfigurationSection,
+    EndEntityNamingSchemeSection,
+    ProfileSelectionSection,
+} from '../_shared/shared-protocol-configuration-sections.mdx';
+
+import scepProtocolConfig from './protocols-scep-protocol-configuration.png';
+import sharedNameScheme from '../_shared/protocols-shared-name-scheme.png';
+import sharedProfileSection from '../_shared/protocol-shared-profile-section.png';
+import scepConfigurations from './protocols-scep-configurations.png';
+import scepAuthValidation from './protocols-scep-auth-validation.png';
+
+SCEP allows devices and systems to automatically enroll for certificates using the Simple Certificate Enrollment Protocol.
+
+This configuration defines how the SCEP endpoint issues certificates and how requests are mapped to End Entities and certificate profiles.
+
+<ProtocolConfigurationSection
+    protocolName="SCEP"
+    screenshot={scepProtocolConfig}
+/>
+
+<EndEntityNamingSchemeSection
+    screenshot={sharedNameScheme}
+/>
+
+<ProfileSelectionSection
+    screenshot={sharedProfileSection}
+/>
+
+## SCEP Configurations
+
+The SCEP Configurations section defines additional SCEP response behavior.
+
+<DocScreenshot
+    alt="SCEP configuration settings"
+    src={scepConfigurations}
+/>
+
+### Enable GetCACert to provide a full CA chain
+
+Includes the full CA certificate chain in the GetCACert response.
+
+## Authentication and Validation
+
+The Authentication and Validation section defines how SCEP requests are authenticated and validated.
+
+<DocScreenshot
+    alt="SCEP authentication and validation settings"
+    src={scepAuthValidation}
+/>
+
+## SCEP Configurations
+
+The SCEP Configurations section defines additional SCEP response behavior.
+
+<DocScreenshot
+    alt="SCEP configuration settings"
+    src={scepConfigurations}
+/>
+
+### Enable GetCACert to provide a full CA chain
+
+Includes the full CA certificate chain in the GetCACert response.
+
+## Authentication and Validation
+
+The Authentication and Validation section defines how SCEP requests are authenticated and validated.
+
+<DocScreenshot
+    alt="SCEP authentication and validation settings"
+    src={scepAuthValidation}
+/>
+
+## Authentication and Validation
+
+The Authentication and Validation section defines how SCEP requests are authenticated and validated.
+
+<DocScreenshot
+    alt="SCEP authentication and validation settings"
+    src={scepAuthValidation}
+/>
+
+### Challenge Type
+
+Defines the challenge method used for SCEP requests.
+
+Available options are:
+
+- **Static**
+- **Remote**
+- **Intune**
+
+### Challenge Resource
+
+The challenge value or resource used during SCEP authentication.
+
+### Intune App ID
+
+The Intune application ID. This field is only used when **Challenge Type** is set to **Intune**.
+
+### Intune App Key
+
+The Intune application key. This field is only used when **Challenge Type** is set to **Intune**.
+
+### Intune Tenant ID
+
+The Intune tenant ID. This field is only used when **Challenge Type** is set to **Intune**.
+
+### Intune Provider Name & Version
+
+The Intune provider name and version. This field is only used when **Challenge Type** is set to **Intune**.

@@ -1,0 +1,82 @@
+---
+title: ACME Protocol Configuration
+hide_title: true
+hide_table_of_contents: true
+---
+import DocScreenshot from '@site/src/components/docs/DocScreenshot';
+
+import acmeProtocolConfig from './protocols-acme-protocol-configuration.png';
+import sharedNameScheme from '../_shared/protocols-shared-name-scheme.png';
+import sharedProfileSection from '../_shared/protocol-shared-profile-section.png';
+import acmeUrlConfig from './protocols-acme-url-config.png';
+import acmeAuthentication from './protocols-acme-authentication.png';
+import {
+    ProtocolConfigurationSection,
+    EndEntityNamingSchemeSection,
+    ProfileSelectionSection,
+} from '../_shared/shared-protocol-configuration-sections.mdx';
+
+ACME allows systems and applications to automatically request and renew certificates.
+
+This configuration defines how the ACME endpoint issues certificates and how requests are mapped to End Entities and certificate profiles.
+
+<ProtocolConfigurationSection
+    protocolName="ACME"
+    screenshot={acmeProtocolConfig}
+/>
+
+<EndEntityNamingSchemeSection
+    screenshot={sharedNameScheme}
+/>
+
+<ProfileSelectionSection
+    screenshot={sharedProfileSection}
+/>
+
+## URL Configuration
+
+The URL Configuration section defines the public URLs used by the ACME service.
+
+<DocScreenshot
+    alt="ACME URL configuration settings"
+    src={acmeUrlConfig}
+/>
+
+### Base URL
+
+The base URL for the ACME service.
+
+### Terms of Service URL
+
+The URL for the ACME terms of service.
+
+### Terms of Service Approval
+
+Requires users to approve the new terms of service if the Terms of Service URL changes.
+
+## Authentication and Validation
+
+The Authentication and Validation section defines the challenge type used for ACME validation.
+
+<DocScreenshot
+    alt="ACME authentication and validation settings"
+    src={acmeAuthentication}
+/>
+
+### Challenge Type
+
+Defines the ACME challenge type.
+
+Available options are:
+
+- **HTTP-01**
+- **DNS-01**
+- **TLS-ALPN-01**
+
+Only **HTTP-01** is currently supported.
+
+### Http Challenge Port
+
+The port used for HTTP-01 validation.
+
+This field is shown when **Challenge Type** is set to **HTTP-01**.
