@@ -1,0 +1,15 @@
+tools:
+  # tools-build
+  - name: buf
+    version:
+      want: v1.66.1
+    method: github-release
+    with:
+      repo: bufbuild/buf
+
+  - name: protoc-gen-connect-openapi
+    version:
+      want: v0.25.5
+    method: github-release
+    with:
+      repo: sudorandom/protoc-gen-connect-openapi

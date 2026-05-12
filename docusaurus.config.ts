@@ -11,8 +11,10 @@ const protobufHash = execSync('git -C external/otpki-protobuf rev-parse --short 
 }).trim();
 const displayVersion = '0.0.2-dev';
 
+
+
 const config: Config = {
-  title: 'Omni Trust Public Key Infrastructure',
+  title: 'OmniTrust Public Key Infrastructure',
   tagline: 'OTPKI',
   favicon: 'img/omni-trust.ico',
 
@@ -20,11 +22,15 @@ const config: Config = {
     v4: true,
   },
 
-  url: 'https://docs.example.com',
-  baseUrl: '/',
-
-  organizationName: 'OmniTrust',
-  projectName: 'otpki',
+  // GitHub Pages requirements.  Do not change without consulting
+  // https://docusaurus.io/docs/deployment#docusaurusconfigjs-settings
+  url: 'https://otpki.github.io', // initially just check to make sure github.io page works
+  baseUrl: '/otpki-docs',
+  organizationName: 'otpki',
+  projectName: 'otpki-docs',
+  deploymentBranch: 'gh-pages',
+  trailingSlash: true,
+  // end GitHub Pages
 
   onBrokenLinks: 'throw',
 
@@ -78,7 +84,7 @@ const config: Config = {
           type: 'html',
           position: 'right',
           value:
-            '<a class="navbar__item ot-website-link" href="https://omnitrust.com/" target="_blank" rel="noreferrer" aria-label="OmniTrust website"><img class="ot-website-logo" src="/img/ot-logo-color.svg" alt="OmniTrust" /></a>',
+            '<a class="navbar__item ot-website-link" href="https://omnitrust.com/" target="_blank" rel="noreferrer" aria-label="OmniTrust website"><img class="ot-website-logo" src="/otpki-docs/img/ot-logo-color.svg" alt="OmniTrust" /></a>',
         },
       ],
     },

@@ -4,13 +4,13 @@ toc_min_heading_level: 2
 toc_max_heading_level: 3
 ---
 
-A **group** is a reusable collection of [users](./users). Groups are an organizational tool: they let you refer to a set of users by a single name in other parts of OTPKI.
+A **group** is a reusable collection of [users](../users). Groups are an organizational tool: they let you refer to a set of users by a single name in other parts of OTPKI.
 
-> Groups do **not** grant permissions. To give a user access, assign a [role](./roles). For more on how access decisions are made, see [Permissions](../permissions/permissions).
+> Groups do **not** grant permissions. To give a user access, assign a [role](../roles). For more on how access decisions are made, see [Permissions](../../permissions).
 
 ## Where Groups Are Used
 
-Today, groups are consulted by [Approval Profiles](../approval-workflows/approval-profiles), which can name a group as one of the approver collections that can act on work items. Any feature that gates an action by "anyone in this group" will reference groups defined on this page.
+Today, groups are consulted by [Approval Profiles](../../approval-workflows/approval-profiles), which can name a group as one of the approver collections that can act on work items. Any feature that gates an action by "anyone in this group" will reference groups defined on this page.
 
 ## Groups List
 
@@ -44,8 +44,8 @@ Use the row menu on the groups list to delete a group. Deleting a group removes 
 
 Group membership is set on the **user**, not on the group. There are two places to manage it:
 
-- On a single user's **Edit User** form (see [Users](./users)), in the **Groups** picker.
-- On the [Permissions](../permissions/permissions) screen, under the **User Assignments** tab. Select a user, then toggle group memberships from the **Group Memberships** card.
+- On a single user's **Edit User** form (see [Users](../users)), in the **Groups** picker.
+- On the [Permissions](../../permissions) screen, under the **User Assignments** tab. Select a user, then toggle group memberships from the **Group Memberships** card.
 
 There is no member list directly on the group itself.
 
@@ -53,4 +53,4 @@ There is no member list directly on the group itself.
 
 - **Group names are unique.** Two groups cannot share a name.
 - **Membership is on the user record.** Removing a group does not delete its users; removing a user does not delete the group.
-- **Groups have no permissions of their own.** Anywhere OTPKI checks whether a user can do something, it consults the user's [roles](./roles), not their groups.
+- **Groups have no permissions of their own.** Anywhere OTPKI checks whether a user can do something, it consults the user's [roles](../roles), not their groups.
