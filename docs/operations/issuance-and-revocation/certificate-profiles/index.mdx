@@ -26,7 +26,7 @@ import DocScreenshot from '@site/src/components/docs/DocScreenshot';
 Certificate Profiles control aspects of the issued certificates.  For some fields it bounds acceptable input, replaces or requires certain fields on the issuance request.  
 There are many settings and we will describe each below:
 
-## Certificate Profile from
+## Certificate Profile Form
 
 ### Basic Settings
 Name and description are set here.  Most importantly the `type` of certificate type must be chosen as either:
@@ -43,7 +43,7 @@ Available CA's allows one to pick what CA's can use this certificate profile.  L
 />
 
 ### Approval
-This section allows configuration for Approvals.  See `Approval Profiles` for more information.  These are optional.
+This section allows configuration for Approvals.  See [Approval Profiles](../../administration/approval-workflows/approval-profiles) for more information.  These are optional.
 
 <DocScreenshot
   alt="Certificate Profile Form section"
@@ -103,7 +103,7 @@ This setting allows for the specification of key usages on the issued certificat
   alt="Certificate Profile Form section"
   src={keyusageScreenshot}
   crop={24}
-/>≈
+/>
 
 ### Extended Key Usage
 Similar to key usage, this is a different x509 extension that allows additional key usage flags to be set.
