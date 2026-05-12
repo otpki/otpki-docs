@@ -1,7 +1,8 @@
 ---
 title: OCSP
 hide_title: true
-hide_table_of_contents: true
+toc_min_heading_level: 2
+toc_max_heading_level: 2
 ---
 
-This section is reserved for OCSP validation and response handling in OTPKI.
+_Coming soon_
