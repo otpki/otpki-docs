@@ -8,7 +8,6 @@ This section is reserved for OTPKI administration tasks.
 
 ## Administration Areas
 
-- [Identity Management](./identity-management)
-- [Permissions](./permissions)
-- [Identity Providers](./identity-providers)
+- [Identity](./identity)
+- [Permissions](./permissions/permissions)
 - [Approval Workflows](./approval-workflows)
