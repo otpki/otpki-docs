@@ -1,0 +1,46 @@
+---
+title: Import Certificate Authority
+hide_title: true
+toc_min_heading_level: 2
+toc_max_heading_level: 2
+---
+
+import caImportTopScreenshot from './ca-import-header.png';
+import caImportPkcs12Screenshot from './ca-import-pkcs12.png';
+import caImportKeyNCertFileScreenshot from './ca-import-key-cert-file.png';
+import caImportAddlSettingsScreenshot from './ca-import-addl-settings.png';
+import DocScreenshot from '@site/src/components/docs/DocScreenshot';
+
+# Certificate Authority Import
+CAs can be imported either as a PKCS12 file or as separate Certificate and Key files.  Both support encryption with a provided secret  
+
+<DocScreenshot
+  alt="CA Import mode"
+  src={caImportTopScreenshot}
+  crop={0}
+/>
+
+Note: all of the settings available on creation are settable here as well using this widget.
+<DocScreenshot
+  alt="CA settings"
+  maxWidth="25em"
+  crop={0}
+  src={caImportAddlSettingsScreenshot}
+/>
+
+## Import PKCS12
+CA import with a PKCS12 file with optional decrypt password.
+<DocScreenshot
+  alt="PKCS12 import"
+  src={caImportPkcs12Screenshot}
+/>
+
+
+## Import by PEM upload
+CA import with separate Certificate, chain and key uploads.
+The key PEM supports PEM decryption with the provided password.
+
+<DocScreenshot
+  alt="Key and Cert file import"
+  src={caImportKeyNCertFileScreenshot}
+/>
