@@ -1,0 +1,19 @@
+---
+title: SCP Publisher Configuration
+hide_title: true
+hide_table_of_contents: true
+---
+import publisherConfigScpScreenshot from './publisher-config-scp.png';
+import DocScreenshot from '@site/src/components/docs/DocScreenshot';
+
+## SCP Publisher Configuration
+
+The SCP Publisher allows upload of Certificate or CRL data over SCP to your desired SCP server.  You will need to provide the SSH key and import into OTPKI and then select it here in the below form.
+In addition to typical SSH parameters, you must specify the upload path.  These paths contain template variables that use Certificate or CRL fields to populate them.  This allows for custom filenames for each uploaded artifact.
+
+
+<DocScreenshot
+  alt="SCP Publisher specific settings"
+  src={publisherConfigScpScreenshot}
+/>
+

@@ -1,0 +1,19 @@
+---
+title: Certificate Publishers
+hide_title: true
+hide_table_of_contents: true
+---
+
+import publisherCertScreenshot from './publisher-cert.png';
+import DocScreenshot from '@site/src/components/docs/DocScreenshot';
+
+## Certificate Publisher
+
+Certificate publishers can be assigned to CAs, Certificate Profiles, or both.  In addition, you can choose to publish on Issuance, Revocation or both events.
+Whenever the configured event for a Certificate occurs that matches the selected CA or Certificate Profile, the certificate will be published with the selected configuration.
+
+<DocScreenshot
+  alt="Certificate Publisher specific settings"
+  src={publisherCertScreenshot}
+/>
+
