@@ -9,6 +9,7 @@
   --ifm-color-primary-lightest: #4c9fe5;
   --ifm-background-color: oklch(1 0 0);
   --ifm-background-surface-color: oklch(0.968 0.007 247.896);
+  --ifm-navbar-height: 4rem;
   --ifm-navbar-background-color: oklch(1 0 0 / 0.94);
   --ifm-footer-background-color: oklch(0.208 0.042 265.755);
   --ifm-font-color-base: oklch(0.129 0.042 264.695);
@@ -38,6 +39,7 @@
   --ifm-color-primary-lightest: #b5d3f3;
   --ifm-background-color: oklch(0.129 0.042 264.695);
   --ifm-background-surface-color: oklch(0.208 0.042 265.755);
+  --ifm-navbar-height: 4rem;
   --ifm-navbar-background-color: oklch(0.129 0.042 264.695 / 0.94);
   --ifm-footer-background-color: oklch(0.208 0.042 265.755);
   --ifm-font-color-base: oklch(0.984 0.003 247.858);
@@ -52,6 +54,15 @@
   --ifm-color-emphasis-800: oklch(0.929 0.013 255.508);
   --ifm-code-background: oklch(0.279 0.041 260.031);
   --docusaurus-highlighted-code-line-bg: oklch(0.279 0.041 260.031);
+}
+
+[class*='docMainContainer'] {
+  padding-left: 3rem; /* Adds custom padding to the left of the content area */
+  padding-right: 3rem; /* Adds custom padding to the right of the content area */
+}
+
+[class*='activeDocTitle'] {
+  overflow: visible !important; 
 }
 
 .navbar {
