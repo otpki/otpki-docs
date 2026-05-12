@@ -1,0 +1,21 @@
+---
+title: CRL
+hide_title: true
+hide_table_of_contents: true
+---
+
+import caCrlConfigScreenshot from './ca-crl-config.png';
+import DocScreenshot from '@site/src/components/docs/DocScreenshot';
+
+# CRLs
+
+CRLs will be generated for any CA configured with a non-zero (default) validity period.  A task is started on behalf of any CA that will run on this interval to generate and store the CRL.  
+Further, if a Publisher is configured for this CA to publish its CRLs an additional task will fire to publish the recently generated CRL.
+
+`*` Delta CRLs not yet supported.
+
+<DocScreenshot
+  alt="CA configuration settings for CRL validity periods"
+  src={publisherCrlScreenshot}
+/>
+
