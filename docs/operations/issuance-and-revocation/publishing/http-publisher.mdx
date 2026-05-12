@@ -2,6 +2,8 @@
 title: HTTP Publisher Configuration
 hide_title: true
 hide_table_of_contents: true
+toc_min_heading_level: 2
+toc_max_heading_level: 2
 ---
 
 import publisherConfigHttpScreenshot from './publisher-config-http.png';
@@ -16,3 +18,16 @@ The HTTP Publisher allows for publish of CRL or Certificate data as base64 encod
   src={publisherConfigHttpScreenshot}
 />
 
+Below are examples of the JSON bodies sent in requests when either a Certificate or CRL:
+ - CRL
+```json
+{
+  "crlData": "MIIBjzB5AgEBMA0GCSqGSIb3DQEBCwUA...[truncated example base64]...NgS2CZ7hBBQavp5B/gMFo1Ongw=="
+}
+```
+ - Certificate
+```json
+{
+  "certData": "MIINkTCCDHugAwIBAgIRAPOsuIR1hO6...[truncated example base64]...oVJop5xZfNbU/1Hxq9SOFIBWw8"
+}
+```
