@@ -4,16 +4,16 @@ toc_min_heading_level: 2
 toc_max_heading_level: 3
 ---
 
-An **identity provider** is an external system that authenticates [users](./users) into OTPKI. OTPKI supports OpenID Connect (OIDC) providers, such as Keycloak, Okta, Entra ID (Azure AD), or any other compliant provider.
+An **identity provider** is an external system that authenticates [users](../users) into OTPKI. OTPKI supports OpenID Connect (OIDC) providers, such as Keycloak, Okta, Entra ID (Azure AD), or any other compliant provider.
 
-This page covers configuring OIDC providers, the sign-in experience, and the related authentication settings. Permissions are handled separately, on the [Permissions](../permissions/permissions) screen.
+This page covers configuring OIDC providers, the sign-in experience, and the related authentication settings. Permissions are handled separately, on the [Permissions](../../permissions) screen.
 
 ## Authentication Methods
 
 OTPKI accepts two kinds of credentials:
 
 - **Single sign-on through an OIDC provider.** The user is redirected to the configured provider, signs in there, and returns to OTPKI with a session.
-- **Client certificate.** Mostly used by scripts, automation, and other non-browser callers. The certificate must be attached to an OTPKI user account (see [Users](./users)).
+- **Client certificate.** Mostly used by scripts, automation, and other non-browser callers. The certificate must be attached to an OTPKI user account (see [Users](../users)).
 
 A single user account can hold both.
 
@@ -40,7 +40,7 @@ In the default stack, the gateway exposes:
 
 The exact host and port depend on how your deployment was installed. Check the deployment or networking documentation for the specific values in your environment. The expectation is the same regardless of how it is exposed: connect to the mTLS endpoint, present a certificate during the TLS handshake, and the ingress will forward it to OTPKI for the rest of the request.
 
-For the certificate to actually authenticate as an OTPKI user, the user account must have that certificate attached. See [Users](./users) for how to upload a certificate to a user account. If OTPKI receives a certificate that is not attached to any existing user, it can create a new user automatically using the certificate's common name as the username.
+For the certificate to actually authenticate as an OTPKI user, the user account must have that certificate attached. See [Users](../users) for how to upload a certificate to a user account. If OTPKI receives a certificate that is not attached to any existing user, it can create a new user automatically using the certificate's common name as the username.
 
 ## Identity Providers List
 
@@ -102,14 +102,14 @@ Use **Session Max Length** to set the absolute maximum lifetime of a session, re
 
 Use **Create Unknown Users** to control what happens when somebody signs in through the provider for the first time:
 
-- **Enabled** - OTPKI creates a [user](./users) account on first sign-in, using the claims from the provider.
+- **Enabled** - OTPKI creates a [user](../users) account on first sign-in, using the claims from the provider.
 - **Disabled** - the sign-in is refused if no matching user exists. Use this when you want to provision users manually.
 
 ### Create Unknown Roles
 
 Use **Create Unknown Roles** to control what happens when a sign-in token contains role names OTPKI does not recognize:
 
-- **Enabled** - OTPKI creates the missing [roles](./roles) on the fly. Auto-created roles appear with the **System** badge and start with no permissions until an administrator edits them on the [Permissions](../permissions/permissions) screen.
+- **Enabled** - OTPKI creates the missing [roles](../roles) on the fly. Auto-created roles appear with the **System** badge and start with no permissions until an administrator edits them on the [Permissions](../../permissions) screen.
 - **Disabled** - role names the provider sends that do not exist in OTPKI are silently ignored. Only roles that already exist in OTPKI are assigned to the user.
 
 ## Edit Identity Provider

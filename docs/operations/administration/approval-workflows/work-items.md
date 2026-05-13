@@ -4,7 +4,7 @@ toc_min_heading_level: 2
 toc_max_heading_level: 3
 ---
 
-A **work item** is the unit of work an approver acts on. OTPKI creates a work item whenever a request is made against a resource that references an [approval profile](./approval-profiles). The work item records which approval profile governs the decision, which underlying resource (an enrollment request or an issuance request) is waiting, and which approver users have already signed off.
+A **work item** is the unit of work an approver acts on. OTPKI creates a work item whenever a request is made against a resource that references an [approval profile](../approval-profiles). The work item records which approval profile governs the decision, which underlying resource (an enrollment request or an issuance request) is waiting, and which approver users have already signed off.
 
 Approvers do not interact with the underlying enrollment or issuance request directly. They review and resolve the work item, and OTPKI then advances the gated request on their behalf once the approval threshold is met.
 
@@ -28,8 +28,8 @@ Each work item is bound to exactly one approval profile. The profile determines 
 
 Each work item references the resource that triggered it. The resource type is one of:
 
-- **Enrollment Request** - produced when a new or existing end entity is enrolled against an end entity profile that has an approval profile assigned. See [Enrollment Requests](./enrollment-requests).
-- **Issuance Request** - produced when an issuance request targets a certificate profile or certificate authority that has an approval profile assigned. See [Issuance Requests](./issuance-requests).
+- **Enrollment Request** - produced when a new or existing end entity is enrolled against an end entity profile that has an approval profile assigned. See [Enrollment Requests](../enrollment-requests).
+- **Issuance Request** - produced when an issuance request targets a certificate profile or certificate authority that has an approval profile assigned. See [Issuance Requests](../issuance-requests).
 
 The resource ID identifies the specific enrollment or issuance request the work item is gating. Approving or rejecting the work item drives that specific request to its next state.
 
@@ -57,7 +57,7 @@ The detail view lists each user who has already approved the work item, along wi
 
 Use **Approve** to record your approval on a pending work item. OTPKI records the action under your user account and increments the approval count.
 
-- If the approval count is now equal to the **Number of Approvals Required** on the bound approval profile, OTPKI sets the work item to **Approved** and advances the gated request - see [Enrollment Requests](./enrollment-requests) and [Issuance Requests](./issuance-requests) for what happens next per resource type.
+- If the approval count is now equal to the **Number of Approvals Required** on the bound approval profile, OTPKI sets the work item to **Approved** and advances the gated request - see [Enrollment Requests](../enrollment-requests) and [Issuance Requests](../issuance-requests) for what happens next per resource type.
 - If the count is still below the threshold, the work item remains **Pending** and continues to wait for additional approvers.
 
 > OTPKI rejects the approve action with an authorization error if your user is not listed in the approval profile's **Approver Users**, does not belong to any of its **Approver Groups**, and does not hold any of its **Approver Roles**.

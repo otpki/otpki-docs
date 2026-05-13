@@ -4,9 +4,9 @@ toc_min_heading_level: 2
 toc_max_heading_level: 3
 ---
 
-A **user** is an individual account that can sign in to OTPKI and take actions. OTPKI supports two ways for a user to authenticate: through a configured [identity provider](./identity-providers), or with a client certificate.
+A **user** is an individual account that can sign in to OTPKI and take actions. OTPKI supports two ways for a user to authenticate: through a configured [identity provider](../identity-providers), or with a client certificate.
 
-What a user is allowed to do is controlled by the [roles](./roles) assigned to them. See [Permissions](../permissions/permissions) for how role permissions are configured and how role assignments are managed.
+What a user is allowed to do is controlled by the [roles](../roles) assigned to them. See [Permissions](../../permissions) for how role permissions are configured and how role assignments are managed.
 
 ## Users List
 
@@ -48,19 +48,19 @@ Each certificate can only be associated with one OTPKI user.
 
 ### Groups
 
-Use **Groups** to add the user to one or more [groups](./groups). Group membership does not grant permissions on its own; it only affects features that key off groups, such as approval workflows.
+Use **Groups** to add the user to one or more [groups](../groups). Group membership does not grant permissions on its own; it only affects features that key off groups, such as approval workflows.
 
 ### Roles
 
-Use **Roles** to assign one or more [roles](./roles) to the user. Roles are what grant permissions. A user with no roles has no permissions, even if they belong to groups.
+Use **Roles** to assign one or more [roles](../roles) to the user. Roles are what grant permissions. A user with no roles has no permissions, even if they belong to groups.
 
-> **Roles and groups can also be managed in bulk.** The [Permissions](../permissions/permissions) screen's **User Assignments** tab is a more convenient place to assign roles and groups to many users.
+> **Roles and groups can also be managed in bulk.** The [Permissions](../../permissions) screen's **User Assignments** tab is a more convenient place to assign roles and groups to many users.
 
 ## Edit User
 
 Use the row menu on the users list to open the edit form. The fields are the same as on the Create form.
 
-Some fields on user accounts that authenticate through an [identity provider](./identity-providers) are managed by the provider and refresh on every sign-in. Edits you make to the user's first name, last name, email, or roles will be overwritten the next time the user signs in if the values from the provider differ. To make changes stick, update the values in the identity provider itself.
+Some fields on user accounts that authenticate through an [identity provider](../identity-providers) are managed by the provider and refresh on every sign-in. Edits you make to the user's first name, last name, email, or roles will be overwritten the next time the user signs in if the values from the provider differ. To make changes stick, update the values in the identity provider itself.
 
 ## Delete User
 
@@ -74,7 +74,7 @@ System users - the accounts OTPKI uses internally - cannot be deleted from the U
 
 OTPKI accepts two forms of credentials for a user:
 
-- **Single sign-on through an identity provider.** On first sign-in, OTPKI can create the user automatically and link it to the provider. Subsequent sign-ins match the same user by that link. See [Identity Providers](./identity-providers) for the full sign-in flow.
+- **Single sign-on through an identity provider.** On first sign-in, OTPKI can create the user automatically and link it to the provider. Subsequent sign-ins match the same user by that link. See [Identity Providers](../identity-providers) for the full sign-in flow.
 - **Client certificate.** If a user has a certificate attached, OTPKI accepts that certificate on requests sent through the mTLS endpoint. An unknown certificate can also auto-create a user, with the certificate's common name as the username.
 
 A single user account can hold both.

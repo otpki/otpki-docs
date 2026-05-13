@@ -7,9 +7,9 @@ toc_max_heading_level: 2
 An **issuance request** is the operation OTPKI performs when its issuer service is asked to sign a certificate using a specific certificate profile and certificate authority. Issuance requests come from two sources:
 
 - Directly, when an operator or integration submits an issuance request against a certificate profile and CA.
-- Indirectly, when an approved [enrollment request](./enrollment-requests) hands off to the issuer to actually issue the end entity certificate.
+- Indirectly, when an approved [enrollment request](../enrollment-requests) hands off to the issuer to actually issue the end entity certificate.
 
-In either case, OTPKI can hold the issuance request behind one or two layers of approval, depending on which of the targeted certificate profile and certificate authority reference an [approval profile](./approval-profiles).
+In either case, OTPKI can hold the issuance request behind one or two layers of approval, depending on which of the targeted certificate profile and certificate authority reference an [approval profile](../approval-profiles).
 
 ## Issuance Request List
 
@@ -54,7 +54,7 @@ When the last required work item for an issuance request reaches **Approved**, O
 1. Re-loads the persisted issuance request, certificate profile, certificate authority, and (if specified) target certificate authority.
 2. Signs the certificate using the configured signing key and chain.
 3. Stores the issued certificate and updates the issuance request status to **Generated**.
-4. If the request was created on behalf of an [enrollment request](./enrollment-requests), OTPKI also stores the certificate against the end entity and transitions the end entity to **Generated**.
+4. If the request was created on behalf of an [enrollment request](../enrollment-requests), OTPKI also stores the certificate against the end entity and transitions the end entity to **Generated**.
 5. If the request specified a target certificate authority (for example, when issuing a subordinate CA certificate), OTPKI attaches the issued certificate and its chain to that CA.
 
 ## What Happens When a Work Item Is Rejected

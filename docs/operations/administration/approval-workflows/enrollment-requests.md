@@ -4,7 +4,7 @@ toc_min_heading_level: 2
 toc_max_heading_level: 2
 ---
 
-An **enrollment request** is the operation OTPKI performs when a new or existing end entity submits a CSR (or other supported request payload) to be issued a certificate. When the targeted end entity profile has an [approval profile](./approval-profiles) assigned, OTPKI does not act on the request immediately - it parks the enrollment, marks the end entity as **Waiting for Approval**, and creates a [work item](./work-items) for the configured approvers.
+An **enrollment request** is the operation OTPKI performs when a new or existing end entity submits a CSR (or other supported request payload) to be issued a certificate. When the targeted end entity profile has an [approval profile](../approval-profiles) assigned, OTPKI does not act on the request immediately - it parks the enrollment, marks the end entity as **Waiting for Approval**, and creates a [work item](../work-items) for the configured approvers.
 
 ## Enrollment Request List
 
@@ -41,7 +41,7 @@ When approvers reach the **Number of Approvals Required** on the bound approval 
 1. Sets the work item status to **Approved**.
 2. Transitions the end entity status from **Waiting for Approval** to **New**.
 3. Submits an issuance request to the issuer service using the stored enrollment data, certificate template, and end entity.
-4. If the resulting issuance is also gated (because the targeted certificate profile or certificate authority has its own approval profile), the issuance request itself becomes a separate work item; see [Issuance Requests](./issuance-requests).
+4. If the resulting issuance is also gated (because the targeted certificate profile or certificate authority has its own approval profile), the issuance request itself becomes a separate work item; see [Issuance Requests](../issuance-requests).
 5. Once issuance completes, OTPKI stores the resulting end entity certificate and updates the end entity status to **Generated**.
 
 ## What Happens When the Work Item Is Rejected

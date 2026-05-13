@@ -13,11 +13,25 @@ const generatedCurrentRoot = resolve(currentOutputDir, 'otpki/public');
 const protobufProtoRoot = resolve(protobufRoot, 'proto');
 
 const run = (command, args, options = {}) => {
+  const newEnv = { 
+    ...process.env, 
+    PATH: `.tool:bin:${process.env.PATH}` 
+  };
   const result = spawnSync(command, args, {
     cwd: repoRoot,
     stdio: 'inherit',
+    env: newEnv,
     ...options,
   });
+
+  if (result.error) {
+    if (result.error.code === 'ENOENT') {
+      console.error(`Required command not found: ${command}`);
+    } else {
+      console.error(result.error);
+    }
+    process.exit(1);
+  }
 
   if (result.status !== 0) {
     process.exit(result.status ?? 1);

@@ -8,7 +8,7 @@ An **approval profile** defines who can approve a gated operation and how many a
 
 Approval profiles are reusable. A single profile can be attached to multiple end entity profiles, certificate profiles, and certificate authorities, so the same approver pool governs every operation that references it.
 
-Approval profiles do not themselves perform any action. They are referenced from the resources whose operations should be gated, and OTPKI consults the reference at request time to decide whether to defer the request as a [work item](./work-items) for approval.
+Approval profiles do not themselves perform any action. They are referenced from the resources whose operations should be gated, and OTPKI consults the reference at request time to decide whether to defer the request as a [work item](../work-items) for approval.
 
 ## Approval Profile List
 
@@ -63,11 +63,11 @@ phase of the certificate lifecycle:
 
 | Resource | Field | Triggers approval for |
 | --- | --- | --- |
-| [End Entity Profile](../../enrollment/end-entity-profiles) | Approval Profile | Enrollment requests against the profile (both new end entities and re-enrollments of existing ones) |
-| [Certificate Profile](../../issuance-and-revocation/certificate-profiles) | Approval Profile | Issuance requests that use this certificate profile |
-| [Certificate Authority](../../issuance-and-revocation/certificate-authorities) | Approval Profile | Issuance requests signed by this CA |
+| [End Entity Profile](../../../enrollment/end-entity-profiles) | Approval Profile | Enrollment requests against the profile (both new end entities and re-enrollments of existing ones) |
+| [Certificate Profile](../../../issuance-and-revocation/certificate-profiles) | Approval Profile | Issuance requests that use this certificate profile |
+| [Certificate Authority](../../../issuance-and-revocation/certificate-authorities) | Approval Profile | Issuance requests signed by this CA |
 
-When more than one of these references applies to the same operation, OTPKI evaluates them in order - see [Enrollment Requests](./enrollment-requests) and [Issuance Requests](./issuance-requests) for the per-request flow.
+When more than one of these references applies to the same operation, OTPKI evaluates them in order - see [Enrollment Requests](../enrollment-requests) and [Issuance Requests](../issuance-requests) for the per-request flow.
 
 ## Delete Approval Profile
 

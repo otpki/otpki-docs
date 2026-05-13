@@ -57,7 +57,7 @@ configure, operate, or integrate with OTPKI.
 ## Start Here
 
 - Go to [Getting Started](./getting-started.md) for initial setup and onboarding content
-- Go to [Reference](./reference) for technical details and deeper documentation
+- Go to [Reference](./reference/index.md) for technical details and deeper documentation
 - Use the References link in the navigation to open technical reference material, including the API documentation
 
 ## Documentation Scope

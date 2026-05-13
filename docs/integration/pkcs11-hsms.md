@@ -5,7 +5,7 @@ hide_table_of_contents: true
 
 ## Introduction
 
-OTPKI integrates with your HSM via the **OTPKI PKCS#11 Proxy**, a gRPC server that loads the PKCS#11 shared library (`.so`) and exposes it to OTPKI. The following documentation will discuss the setup procedures and configuration requirements on the proxy/hsm host. For documentation relating to connecting to this proxy from OTPKI, see [PKCS#11 Proxy Key Configurations](../operations/issuance-and-revocation/key-management/key-configurations/pkcs11-proxy/key-configurations).
+OTPKI integrates with your HSM via the **OTPKI PKCS#11 Proxy**, a gRPC server that loads the PKCS#11 shared library (`.so`) and exposes it to OTPKI. The following documentation will discuss the setup procedures and configuration requirements on the proxy/hsm host. For documentation relating to connecting to this proxy from OTPKI, see [PKCS#11 Proxy Key Configurations](../../operations/issuance-and-revocation/key-management/key-configurations/pkcs11-proxy/key-configurations).
 
 The proxy is composed of pluggable **modules**. Every deployment registers `pkcs11.base`, which handles the standard PKCS#11 RPCs. Vendor specific modules may also be required for full HSM features, like `pkcs11.utimaco.pqc` for Utimaco Quantum Protect's post-quantum features.
 
@@ -95,7 +95,7 @@ Run the proxy on a host that has network reachability to OTPKI and access to the
    pkcs11-proxy-server --config /etc/otpki/pkcs11-proxy/config.yaml
    ```
 
-5. Confirm the server is listening on the configured `listen_address` and that OTPKI can reach it over the network. The address you provide here is the same address you enter in the [PKCS#11 Proxy Key Configurations](../operations/issuance-and-revocation/key-management/key-configurations/pkcs11-proxy/key-configurations) page.
+5. Confirm the server is listening on the configured `listen_address` and that OTPKI can reach it over the network. The address you provide here is the same address you enter in the [PKCS#11 Proxy Key Configurations](../../operations/issuance-and-revocation/key-management/key-configurations/pkcs11-proxy/key-configurations) page.
 
 ### Configuration overrides
 
