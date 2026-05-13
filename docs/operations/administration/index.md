@@ -9,5 +9,5 @@ This section is reserved for OTPKI administration tasks.
 ## Administration Areas
 
 - [Identity](./identity)
-- [Permissions](./permissions/permissions)
+- [Permissions](./permissions/permissions.md)
 - [Approval Workflows](./approval-workflows)

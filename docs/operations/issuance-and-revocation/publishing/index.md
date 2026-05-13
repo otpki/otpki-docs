@@ -24,5 +24,5 @@ After a configuration is made, a Certificate or CRL publisher can be assigned to
 
 ### Publishers
 
-- [Certificate Publishers](./certificate-publishers)
+- [Certificate Publishers](./cert-publishers)
 - [CRL Publishers](./crl-publishers)
