@@ -1,0 +1,121 @@
+---
+title: Certificate Profiles
+hide_title: true
+toc_min_heading_level: 2
+toc_max_heading_level: 2
+---
+
+import approvalScreenshot from './ee-profile-approval.png';
+import basicScreenshot from './ee-profile-basic.png';
+import certprofCaScreenshot from './ee-profile-certprof-ca.png';
+import custExtScreenshot from './ee-profile-cust-ext.png';
+import emailScreenshot from './ee-profile-email.png';
+import loginidScreenshot from './ee-profile-loginid.png';
+import nameConstraintsScreenshot from './ee-profile-nameconstraints.png';
+import passwordScreenshot from './ee-profile-password.png';
+import subjectDnScreenshot from './ee-profile-subject-dn.png';
+import subjectSanScreenshot from './ee-profile-subject-san.png';
+import validityScreenshot from './ee-profile-validity.png';
+import DocScreenshot from '@site/src/components/docs/DocScreenshot';
+
+# End Entity Profiles
+
+End entity profiles bound what End Entities can be issued with, how they authenticate and more.
+
+## End Entity Profile Form
+End entity profiles can be created and edited at any time.
+
+### Basic Settings
+Provide name and description.
+<DocScreenshot
+  alt="End Entity Profile Form section"
+  src={basicScreenshot}
+  crop={24}
+/>
+
+### Login ID Configuration
+Login ID controls how the created End Entity will have to identify itself when enrolling.
+<DocScreenshot
+  alt="End Entity Profile Form section"
+  src={loginidScreenshot}
+  crop={24}
+/>
+
+### Password Configuration
+Password configuration creates constraints for password strength or can specify one directly.
+<DocScreenshot
+  alt="End Entity Profile Form section"
+  src={passwordScreenshot}
+  crop={24}
+/>
+
+### Email Configuration
+Controls specification of End Entity email field, requiring one and bounding it to a domain.
+<DocScreenshot
+  alt="End Entity Profile Form section"
+  src={emailScreenshot}
+  crop={24}
+/>
+
+### Subject configuration
+End entity Subject data can be controlled with this configuration
+#### Subject DN Configuration
+The distinguished name fields here can be specified, required, or allow default values when none are provided.
+<DocScreenshot
+  alt="End Entity Profile Form section"
+  src={subjectDnScreenshot}
+  crop={24}
+/>
+
+#### Subject SAN Configuration
+The alternate name fields here can be specified, required, or allow default values when none are provided.
+<DocScreenshot
+  alt="End Entity Profile Form section"
+  src={subjectSanScreenshot}
+  crop={24}
+/>
+
+
+### Certificate Profile and CA Settings
+This controls what certificate authorities and profiles can issue on behalf of this end entity profile.
+A selection of each available and a default from that available selection is required.
+<DocScreenshot
+  alt="End Entity Profile Form section"
+  src={certprofCaScreenshot}
+  crop={24}
+/>
+
+### Approval Settings
+Optional approval profile selection to require approvals for issuance that utilizes this end entity profile. See [Approval Profiles](../../administration/approval-workflows/approval-profiles).
+<DocScreenshot
+  alt="End Entity Profile Form section"
+  src={approvalScreenshot}
+  crop={24}
+/>
+
+
+### Validity Settings
+Controls the manipulation of the issued certificate's validity period, if enabled and set.
+<DocScreenshot
+  alt="End Entity Profile Form section"
+  src={validityScreenshot}
+  crop={24}
+/>
+
+
+### Name Constraints
+Sets the Name Constraints extension.
+<DocScreenshot
+  alt="End Entity Profile Form section"
+  src={nameConstraintsScreenshot}
+  crop={24}
+/>
+
+### Custom Extensions
+Allows for user provided custom certificate extensions.
+<DocScreenshot
+  alt="End Entity Profile Form section"
+  src={custExtScreenshot}
+  crop={24}
+/>
+
