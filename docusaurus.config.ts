@@ -10,7 +10,7 @@ const protobufHash = execSync('git -C external/otpki-protobuf rev-parse --short 
   encoding: 'utf8',
 }).trim();
 const displayVersion = '0.0.2-dev';
-const baseUrl = '/otpki-docs/';
+const baseUrl = '/';
 
 const config: Config = {
   title: 'OmniTrust Public Key Infrastructure',
@@ -23,7 +23,7 @@ const config: Config = {
 
   // GitHub Pages requirements.  Do not change without consulting
   // https://docusaurus.io/docs/deployment#docusaurusconfigjs-settings
-  url: 'https://otpki.github.io', // initially just check to make sure github.io page works
+  url: 'https://docs.otpki.com', // initially just check to make sure github.io page works
   baseUrl: baseUrl,
   organizationName: 'otpki',
   projectName: 'otpki-docs',
