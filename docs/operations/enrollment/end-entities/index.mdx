@@ -1,0 +1,59 @@
+---
+title: Certificate Profiles
+hide_title: true
+toc_min_heading_level: 2
+toc_max_heading_level: 2
+---
+
+import profileSelectScreenshot from './ee-profile-select.png';
+import certProfileScreenshot from './ee-cert-profile.png';
+import identityScreenshot from './ee-identity.png';
+import subjectScreenshot from './ee-subject.png';
+import validityScreenshot from './ee-validity.png';
+import DocScreenshot from '@site/src/components/docs/DocScreenshot';
+
+# End Entities
+
+## End Entity Form
+End entities can be created or edited with this form.  End Entities are also created through enrollment protocols.
+
+### End Entity Profile Selection
+Selecting the End Entity Profile determines a significant amount of the options for an End Entity to issue with.  
+See [End Entity Profiles.](../end-entity-profiles)
+<DocScreenshot
+  alt="End Entity Form section"
+  src={profileSelectScreenshot}
+  crop={0}
+/>
+
+### Identity Settings
+The username and password for the End Entity.
+<DocScreenshot
+  alt="End Entity Form section"
+  src={identityScreenshot}
+  crop={0}
+/>
+
+### Certificate Profile and Certificate Authority
+The certificate profile and CA for which this End Entity will be issued from.
+<DocScreenshot
+  alt="End Entity Form section"
+  src={certProfileScreenshot}
+  crop={0}
+/>
+
+### Validity Period
+The validity period of the certificate issued for this End Entity.
+<DocScreenshot
+  alt="End Entity Form section"
+  src={validityScreenshot}
+  crop={0}
+/>
+
+### Subject configuration
+Controls entity subject distinguished and alternate name extensions.
+<DocScreenshot
+  alt="End Entity Form section"
+  src={subjectScreenshot}
+  crop={0}
+/>
