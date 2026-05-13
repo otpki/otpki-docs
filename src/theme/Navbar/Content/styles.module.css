@@ -18,7 +18,8 @@
     grid-template-columns: var(--doc-sidebar-width) minmax(0, 1fr) auto;
   }
 
-  :global(.navbar__inner > .navbar__items:first-child) {
+  .navbarLeft {
+    justify-content: center;
     min-width: 0;
     overflow: hidden;
     position: relative;
@@ -39,17 +40,20 @@
   flex: 1 1 auto;
   justify-content: flex-start;
   min-width: 0;
-  padding-left: 0.375rem;
+  padding-left: 1.5rem;
 }
 
-.activeDocTitle {
-  color: #b4b4b4;
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  line-height: 1;
-  overflow: hidden;
-  text-align: left;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.breadcrumbSlot {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  height: 100%;
+}
+
+.breadcrumbSlot > :global(nav) {
+  margin: 0;
+}
+
+.breadcrumbSlot :global(.breadcrumbs) {
+  margin: 0;
 }

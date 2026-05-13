@@ -1,7 +1,6 @@
 ---
 sidebar_position: 4
 title: Integration
-hide_title: true
 hide_table_of_contents: true
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: PKCS#11 HSMs
-hide_title: true
 hide_table_of_contents: true
 ---
 
