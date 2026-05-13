@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import clsx from 'clsx';
-import {useLocation} from '@docusaurus/router';
 import {
   ErrorCauseBoundary,
   ThemeClassNames,
@@ -18,6 +17,8 @@ import NavbarSearch from '@theme/Navbar/Search';
 import SearchBar from '@theme/SearchBar';
 
 import styles from './styles.module.css';
+
+export const NAVBAR_BREADCRUMB_SLOT_ID = 'navbar-doc-breadcrumb';
 
 function useNavbarItems() {
   return useThemeConfig().navbar.items;
@@ -52,71 +53,6 @@ ${JSON.stringify(item, null, 2)}`,
   );
 }
 
-function ActiveDocTitle() {
-  const {pathname} = useLocation();
-  const [pageTitle, setPageTitle] = useState<string>('');
-
-  useEffect(() => {
-    if (pathname === '/') {
-      setPageTitle('Welcome to OmniTrust PKI');
-      return;
-    }
-
-    if (!pathname.startsWith('/docs')) {
-      setPageTitle('');
-      return;
-    }
-
-    const readTitle = () => {
-      const fullTitle = document.title ?? '';
-      const fromDocumentTitle = fullTitle.split(' | ')[0]?.trim() ?? '';
-      const fromBreadcrumb =
-        document
-          .querySelector('main .breadcrumbs__item--active .breadcrumbs__link')
-          ?.textContent?.trim() ?? '';
-
-      const nextTitle =
-        fromDocumentTitle &&
-        fromDocumentTitle !== 'Omni Trust Public Key Infrastructure'
-          ? fromDocumentTitle
-          : fromBreadcrumb;
-
-      setPageTitle(nextTitle);
-    };
-
-    readTitle();
-
-    const frame = window.requestAnimationFrame(readTitle);
-    const timeout = window.setTimeout(readTitle, 50);
-    const titleNode = document.querySelector('title');
-    const observer =
-      titleNode &&
-      new MutationObserver(() => {
-        readTitle();
-      });
-
-    if (observer && titleNode) {
-      observer.observe(titleNode, {
-        characterData: true,
-        childList: true,
-        subtree: true,
-      });
-    }
-
-    return () => {
-      window.cancelAnimationFrame(frame);
-      window.clearTimeout(timeout);
-      observer?.disconnect();
-    };
-  }, [pathname]);
-
-  if (!pageTitle || pageTitle === 'Omni Trust Public Key Infrastructure') {
-    return null;
-  }
-
-  return <div className={styles.activeDocTitle}>{pageTitle}</div>;
-}
-
 function NavbarContentLayout({
   left,
   center,
@@ -132,6 +68,7 @@ function NavbarContentLayout({
         className={clsx(
           ThemeClassNames.layout.navbar.containerLeft,
           'navbar__items',
+          styles.navbarLeft,
         )}>
         {left}
       </div>
@@ -162,7 +99,7 @@ export default function NavbarContent() {
           <NavbarItems items={leftItems} />
         </>
       }
-      center={<ActiveDocTitle />}
+      center={<div id={NAVBAR_BREADCRUMB_SLOT_ID} className={styles.breadcrumbSlot} />}
       right={
         <>
           <NavbarItems items={rightItems} />

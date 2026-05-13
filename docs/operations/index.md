@@ -1,7 +1,6 @@
 ---
 sidebar_position: 3
 title: Operations
-hide_title: true
 hide_table_of_contents: true
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: Administration
-hide_title: true
 hide_table_of_contents: true
 ---
 
