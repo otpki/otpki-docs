@@ -56,19 +56,8 @@
   --docusaurus-highlighted-code-line-bg: oklch(0.279 0.041 260.031);
 }
 
-[class*='docMainContainer'] {
-  padding-left: 3rem; /* Adds custom padding to the left of the content area */
-  padding-right: 3rem; /* Adds custom padding to the right of the content area */
-}
-
-[class*='activeDocTitle'] {
-  overflow: visible !important; 
-}
-
 .navbar {
-  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--ifm-toc-border-color);
-  overflow: visible;
 }
 
 .ot-website-link {
@@ -87,8 +76,17 @@
   height: 1.4rem;
   width: auto;
 }
+@media (max-width: 996px) {
+  .theme-doc-breadcrumbs {
+    display: none;
+  }
+}
 
 @media (min-width: 997px) {
+  .navbar {
+    backdrop-filter: blur(12px);
+  }
+
   .navbar::before {
     background: var(--ot-rail-background);
     content: '';
