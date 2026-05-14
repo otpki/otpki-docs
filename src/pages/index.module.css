@@ -193,5 +193,6 @@
   .secondaryCta {
     max-width: none;
     width: 100%;
+    flex: 0 1 8rem;
   }
 }
