@@ -1,0 +1,79 @@
+---
+title: EST Protocol Configuration
+---
+import DocScreenshot from '@site/src/components/docs/DocScreenshot';
+
+import {
+    ProtocolConfigurationSection,
+    EndEntityNamingSchemeSection,
+    ProfileSelectionSection,
+} from '../_shared/shared-protocol-configuration-sections.mdx';
+
+import estProtocolConfig from './protocols-est-protocol-configuration.png';
+import sharedNameScheme from '../_shared/protocols-shared-name-scheme.png';
+import sharedProfileSection from '../_shared/protocol-shared-profile-section.png';
+import estAuthentication from './protocols-est-authentication.png';
+import estKeygen from './protocols-est-keygen.png';
+
+EST allows systems and applications to automatically enroll and renew certificates using Enrollment over Secure Transport.
+
+This configuration defines how the EST endpoint issues certificates and how requests are mapped to End Entities and certificate profiles.
+
+<ProtocolConfigurationSection
+    protocolName="EST"
+    screenshot={estProtocolConfig}
+/>
+
+<EndEntityNamingSchemeSection
+    screenshot={sharedNameScheme}
+/>
+
+<ProfileSelectionSection
+    screenshot={sharedProfileSection}
+/>
+
+## EST Authentication Configuration
+
+The EST Authentication Configuration section defines how clients authenticate when using the enroll and reenroll routes.
+
+<DocScreenshot
+    alt="EST authentication configuration settings"
+    src={estAuthentication}
+/>
+
+### Require Reenroll Certificate Authentication
+
+Requires the client to authenticate with a certificate from a previous enroll or reenroll request before it can reenroll.
+
+### Enable Certificate Authentication
+
+Allows clients to authenticate with a client certificate during enroll or reenroll.
+
+### Enable Basic Authentication
+
+Allows clients to authenticate with a username and password during enroll or reenroll.
+
+### Username
+
+The username used when basic authentication is enabled and an end entity is not required.
+
+### Password
+
+The password used when basic authentication is enabled and an end entity is not required.
+
+## Server Key Generation
+
+The Server Key Generation section allows the server to generate keys for this profile.
+
+<DocScreenshot
+    alt="EST server key generation settings"
+    src={estKeygen}
+/>
+
+### Enable Server Key Generation
+
+Enables server-side key generation for EST requests.
+
+### Key Type
+
+The algorithm used to generate the keys.

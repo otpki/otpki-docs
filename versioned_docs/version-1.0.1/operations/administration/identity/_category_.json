@@ -1,0 +1,9 @@
+{
+  "label": "Identity",
+  "link": {
+    "type": "doc",
+    "id": "operations/administration/identity/index"
+  },
+  "collapsible": true,
+  "collapsed": true
+}

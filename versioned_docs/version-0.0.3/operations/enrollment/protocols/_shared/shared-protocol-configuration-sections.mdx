@@ -1,0 +1,149 @@
+import DocScreenshot from '@site/src/components/docs/DocScreenshot';
+
+export function EndEntityNamingSchemeSection({screenshot}) {
+  return (
+    <>
+      <h2>End Entity Naming Scheme</h2>
+      <p>
+        The end entity naming scheme section defines how OTPKI matches incoming
+        protocol requests to existing end entities. Use these settings to control
+        how the request identity is converted into the login ID used for end
+        entity lookup and creation.
+      </p>
+      {screenshot ? (
+        <DocScreenshot
+          alt="Protocol configuration end entity naming scheme settings"
+          src={screenshot}
+        />
+      ) : null}
+      <h3>Login ID Scheme</h3>
+      <p>
+        Use <strong>Login ID Scheme</strong> to choose how OTPKI builds the login
+        ID from the subject distinguished name (DN) in the incoming request.
+      </p>
+      <p>The available schemes are:</p>
+      <ul>
+        <li>
+          <strong>Full DN</strong>: uses the complete subject DN as the login ID.
+        </li>
+        <li>
+          <strong>Part DN</strong>: uses selected DN attributes as the login ID.
+          Selecting this option displays <strong>Login ID Parts</strong>.
+        </li>
+        <li>
+          <strong>Combo DN</strong>: combines selected DN attributes to form the
+          login ID. Selecting this option displays <strong>Login ID Parts</strong>.
+        </li>
+        <li>
+          <strong>Fixed</strong>: uses the same configured login ID value for
+          every request. Selecting this option displays a field for the fixed
+          value.
+        </li>
+        <li>
+          <strong>Random</strong>: generates a random login ID. Selecting this
+          option displays a field for the random value length.
+        </li>
+      </ul>
+      <h3>Login ID Parts</h3>
+      <p>
+        <strong>Login ID Parts</strong> appears when <strong>Part DN</strong> or
+        <strong>Combo DN</strong> is selected. Use it to choose which parts of the
+        subject DN should be included when OTPKI builds the login ID.
+      </p>
+      <h3>Login ID Fixed</h3>
+      <p>
+        The fixed login ID field appears when <strong>Fixed</strong> is selected.
+        Use it to enter the exact login ID OTPKI should use for matching incoming
+        requests.
+      </p>
+      <h3>Login ID Random Length</h3>
+      <p>
+        The random login ID length field appears when <strong>Random</strong> is
+        selected. Use it to define the length of the generated login ID.
+      </p>
+      <h3>Login ID Prefix</h3>
+      <p>
+        Use <strong>Login ID Prefix</strong> to add a static value before the
+        generated or derived login ID. This can help distinguish identities that
+        come from a specific protocol, environment, or configuration.
+      </p>
+      <h3>Login ID Postfix</h3>
+      <p>
+        Use <strong>Login ID Postfix</strong> to add a static value after the
+        generated or derived login ID. This can help namespace or group end
+        entities that share the same naming pattern.
+      </p>
+    </>
+  );
+}
+
+export function ProfileSelectionSection({screenshot}) {
+  return (
+    <>
+      <h2>Profile Selection</h2>
+      <p>
+        The profile selection section associates the protocol configuration with
+        the end entity and certificate profiles OTPKI will use when processing
+        requests.
+      </p>
+      {screenshot ? (
+        <DocScreenshot
+          alt="Protocol configuration profile selection settings"
+          src={screenshot}
+        />
+      ) : null}
+      <h3>End Entity Profile</h3>
+      <p>
+        Use <strong>End Entity Profile</strong> to select the end entity profile
+        that controls the allowed subject fields, validation rules, and related
+        end entity settings for requests handled by this configuration.
+      </p>
+      <h3>Certificate Profile</h3>
+      <p>
+        Use <strong>Certificate Profile</strong> to select the certificate profile
+        that controls the certificate properties OTPKI will apply when issuing
+        certificates through this configuration.
+      </p>
+    </>
+  );
+}
+
+export function ProtocolConfigurationSection({protocolName = 'protocol', screenshot}) {
+  return (
+    <>
+      <h2>Protocol Configuration</h2>
+      <p>
+        The protocol configuration section defines the required settings for this {protocolName} profile,
+          including the configuration name, issuing certificate authority, and whether requests must match
+          an existing end entity.
+      </p>
+      {screenshot ? (
+        <DocScreenshot
+          alt={`${protocolName} profile protocol configuration settings`}
+          src={screenshot}
+        />
+      ) : null}
+      <h3>Name</h3>
+      <p>
+        Use <strong>Name</strong> to give the protocol configuration a clear label
+        that operators can recognize later when reviewing or selecting protocol
+        profiles.
+      </p>
+      <h3>Certificate Authority</h3>
+      <p>
+        Use <strong>Certificate Authority</strong> to select the CA that will be
+        used to issue certificates for requests handled by this configuration.
+      </p>
+      <h3>End Entity Required</h3>
+      <p>
+        Use <strong>End Entity Required</strong> to require incoming requests to
+        match an existing end entity before OTPKI processes the request.
+      </p>
+      <p>
+        When this option is disabled, OTPKI can process requests without requiring
+        a pre-existing end entity match, subject to the rest of the profile and
+        protocol configuration.
+      </p>
+    </>
+  );
+}

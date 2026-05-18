@@ -1,0 +1,262 @@
+openapi: 3.1.0
+info:
+  title: otpki.public.enrollment.plugin.protocol.est.v1
+paths:
+  /.well-known/est/healthcheck:
+    get:
+      tags:
+        - otpki.public.enrollment.plugin.protocol.est.v1.ESTService
+      summary: Healthcheck
+      description: |-
+        buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
+         buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
+      operationId: otpki.public.enrollment.plugin.protocol.est.v1.ESTService.Healthcheck
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.api.HttpBody'
+  /.well-known/est/{name}/cacerts:
+    get:
+      tags:
+        - otpki.public.enrollment.plugin.protocol.est.v1.ESTService
+      summary: CaCerts
+      description: |-
+        buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
+         buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
+      operationId: otpki.public.enrollment.plugin.protocol.est.v1.ESTService.CaCerts
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+            title: name
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.api.HttpBody'
+  /.well-known/est/{name}/serverkeygen:
+    post:
+      tags:
+        - otpki.public.enrollment.plugin.protocol.est.v1.ESTService
+      summary: ServerKeyGen
+      description: |-
+        buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
+         buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
+      operationId: otpki.public.enrollment.plugin.protocol.est.v1.ESTService.ServerKeyGen
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+            title: name
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+              title: data
+              format: byte
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.api.HttpBody'
+  /.well-known/est/{name}/simpleenroll:
+    post:
+      tags:
+        - otpki.public.enrollment.plugin.protocol.est.v1.ESTService
+      summary: Enroll
+      description: |-
+        buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
+         buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
+      operationId: otpki.public.enrollment.plugin.protocol.est.v1.ESTService.Enroll
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+            title: name
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+              title: data
+              format: byte
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.api.HttpBody'
+  /.well-known/est/{name}/simplereenroll:
+    post:
+      tags:
+        - otpki.public.enrollment.plugin.protocol.est.v1.ESTService
+      summary: ReEnroll
+      description: |-
+        buf:lint:ignore RPC_REQUEST_RESPONSE_UNIQUE
+         buf:lint:ignore RPC_RESPONSE_STANDARD_NAME
+      operationId: otpki.public.enrollment.plugin.protocol.est.v1.ESTService.ReEnroll
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+            title: name
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+              title: data
+              format: byte
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/google.api.HttpBody'
+components:
+  schemas:
+    google.api.HttpBody:
+      type: object
+      properties:
+        contentType:
+          type: string
+          title: content_type
+          description: The HTTP Content-Type header value specifying the content type of the body.
+        data:
+          type: string
+          title: data
+          format: byte
+          description: The HTTP request/response body as raw binary.
+        extensions:
+          type: array
+          items:
+            $ref: '#/components/schemas/google.protobuf.Any'
+          title: extensions
+          description: |-
+            Application specific response metadata. Must be set in the first response
+             for streaming APIs.
+      title: HttpBody
+      additionalProperties: false
+      description: |-
+        Message that represents an arbitrary HTTP body. It should only be used for
+         payload formats that can't be represented as JSON, such as raw binary or
+         an HTML page.
+
+
+         This message can be used both in streaming and non-streaming API methods in
+         the request as well as the response.
+
+         It can be used as a top-level request field, which is convenient if one
+         wants to extract parameters from either the URL or HTTP template into the
+         request fields and also want access to the raw HTTP body.
+
+         Example:
+
+             message GetResourceRequest {
+               // A unique request id.
+               string request_id = 1;
+
+               // The raw HTTP body is bound to this field.
+               google.api.HttpBody http_body = 2;
+
+             }
+
+             service ResourceService {
+               rpc GetResource(GetResourceRequest)
+                 returns (google.api.HttpBody);
+               rpc UpdateResource(google.api.HttpBody)
+                 returns (google.protobuf.Empty);
+
+             }
+
+         Example with streaming methods:
+
+             service CaldavService {
+               rpc GetCalendar(stream google.api.HttpBody)
+                 returns (stream google.api.HttpBody);
+               rpc UpdateCalendar(stream google.api.HttpBody)
+                 returns (stream google.api.HttpBody);
+
+             }
+
+         Use of this type only changes how the request and response bodies are
+         handled, all other features will continue to work unchanged.
+    google.protobuf.Any:
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+          format: binary
+      additionalProperties: true
+      description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
+    otpki.public.enrollment.plugin.protocol.est.v1.CaCertsRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          title: name
+      title: CaCertsRequest
+      additionalProperties: false
+    otpki.public.enrollment.plugin.protocol.est.v1.EnrollRequest:
+      type: object
+      properties:
+        data:
+          type: string
+          title: data
+          format: byte
+        name:
+          type: string
+          title: name
+      title: EnrollRequest
+      additionalProperties: false
+    otpki.public.enrollment.plugin.protocol.est.v1.HealthcheckRequest:
+      type: object
+      title: HealthcheckRequest
+      additionalProperties: false
+    otpki.public.enrollment.plugin.protocol.est.v1.ReEnrollRequest:
+      type: object
+      properties:
+        data:
+          type: string
+          title: data
+          format: byte
+        name:
+          type: string
+          title: name
+      title: ReEnrollRequest
+      additionalProperties: false
+    otpki.public.enrollment.plugin.protocol.est.v1.ServerKeyGenRequest:
+      type: object
+      properties:
+        data:
+          type: string
+          title: data
+          format: byte
+        name:
+          type: string
+          title: name
+      title: ServerKeyGenRequest
+      additionalProperties: false
+security: []
+tags:
+  - name: otpki.public.enrollment.plugin.protocol.est.v1.ESTService

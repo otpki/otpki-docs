@@ -1,0 +1,20 @@
+---
+title: VS Publisher Configuration
+toc_min_heading_level: 2
+toc_max_heading_level: 2
+---
+
+import publisherConfigVsScreenshot from './publisher-config-vs.png';
+import DocScreenshot from '@site/src/components/docs/DocScreenshot';
+
+## Validation Service Publisher
+
+Publish CRLs and Certificates to the OTPKI Validation Service. This is the standard location where CRLs would be available in a typical configuration of OTPKI. Because this is an internally supported service no additional configuration is required other than assigning this as a publisher to your CA or Certificate Profiles.
+
+
+<DocScreenshot
+  alt="VS Publisher specific settings"
+  src={publisherConfigVsScreenshot}
+/>
+
+

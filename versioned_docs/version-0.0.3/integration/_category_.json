@@ -1,0 +1,9 @@
+{
+  "label": "Integration",
+  "link": {
+    "type": "doc",
+    "id": "integration/index"
+  },
+  "collapsible": true,
+  "collapsed": true
+}

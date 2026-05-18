@@ -9,7 +9,7 @@ const protobufHash = execSync('git -C external/otpki-protobuf rev-parse --short 
   cwd: __dirname,
   encoding: 'utf8',
 }).trim();
-const displayVersion = '0.0.2-dev';
+const displayVersion = 'next';
 const baseUrl = '/';
 
 const config: Config = {

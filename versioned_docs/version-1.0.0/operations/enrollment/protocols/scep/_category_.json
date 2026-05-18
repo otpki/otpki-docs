@@ -1,0 +1,9 @@
+{
+  "label": "SCEP",
+  "link": {
+    "type": "doc",
+    "id": "operations/enrollment/protocols/scep/protocol-configurations"
+  },
+  "collapsible": true,
+  "collapsed": true
+}
