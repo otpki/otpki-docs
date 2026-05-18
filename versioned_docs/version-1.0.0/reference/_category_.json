@@ -1,0 +1,9 @@
+{
+  "label": "References",
+  "link": {
+    "type": "doc",
+    "id": "reference/index"
+  },
+  "collapsible": true,
+  "collapsed": true
+}

@@ -1,0 +1,99 @@
+---
+title: CMP Protocol Configuration
+hide_table_of_contents: true
+---
+
+import DocScreenshot from '@site/src/components/docs/DocScreenshot';
+
+import {
+    ProtocolConfigurationSection,
+    EndEntityNamingSchemeSection,
+    ProfileSelectionSection,
+} from '../_shared/shared-protocol-configuration-sections.mdx';
+
+import cmpAuthentication from './protocols-cmp-authentication.png';
+import cmpResponseConfiguration from './protocols-cmp-response-configuration.png';
+import cmpServerKeyGen from './protocols-cmp-server-key-gen.png';
+import cmpProtocolConfig from './protocols-cmp-protocol-configuration.png';
+import sharedNameScheme from '../_shared/protocols-shared-name-scheme.png';
+import sharedProfileSection from '../_shared/protocol-shared-profile-section.png';
+
+CMP allows systems and applications to request and manage certificates using the Certificate Management Protocol.
+
+This configuration defines how the CMP endpoint issues certificates and how requests are mapped to End Entities and certificate profiles.
+
+<ProtocolConfigurationSection
+    protocolName="CMP"
+    screenshot={cmpProtocolConfig}
+/>
+
+<EndEntityNamingSchemeSection
+    screenshot={sharedNameScheme}
+/>
+
+<ProfileSelectionSection
+    screenshot={sharedProfileSection}
+/>
+
+## End Entity Authentication
+
+The End Entity Authentication section defines how CMP clients authenticate during enrollment and reenrollment.
+
+<DocScreenshot
+    alt="CMP authentication configuration settings"
+    src={cmpAuthentication}
+/>
+
+### Use Certificate Authentication
+
+Allows End Entities to authenticate using certificates.
+
+### Require Certificate Authentication for kur path
+
+Requires certificate authentication when using the KUR reenrollment path.
+
+### Permit HMAC Authentication
+
+Allows HMAC authentication for CMP requests.
+
+### Profile Shared Secret
+
+The shared secret used for HMAC authentication when the End Entity does not exist.
+
+## Response Configuration
+
+The Response Configuration section defines how CMP responses are protected and which certificates are included in responses.
+
+<DocScreenshot
+    alt="CMP response configuration settings"
+    src={cmpResponseConfiguration}
+/>
+
+### CMP Response Protection
+
+Defines how CMP responses are authenticated and protected.
+
+### Additional CMP Message Response Certificates
+
+Adds additional CA certificates to the CMP response message.
+
+### Additional PKI Message Response Certificates
+
+Adds additional CA certificates to the PKI response message.
+
+## Server Key Generation
+
+The Server Key Generation section allows the server to generate keys for CMP requests.
+
+<DocScreenshot
+    alt="CMP server key generation settings"
+    src={cmpServerKeyGen}
+/>
+
+### Allow Keygen
+
+Enables server-side key generation.
+
+### Key Type
+
+The algorithm used by the server to generate of keys.
