@@ -29,6 +29,8 @@ export default function DocScreenshot({
         margin: '1.25rem 0 1.75rem 0.75rem',
         maxWidth,
         overflow: 'hidden',
+        marginLeft: 'auto',
+        marginRight: 'auto',
       }}>
       <img
         alt={alt}
