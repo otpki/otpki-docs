@@ -200,8 +200,8 @@ Click **Save**.
 
 ## Step 9: Provision Human Users
 
-1. Navigate to **Administration** → **Identity** → **Users** and click **Create** for each
-   human user (see [Basic User Management Guide](./basic-user-mgmt-guide.md)).
+1. Navigate to **Auth** → **Users** and click **Create** for each
+   human user (see [Basic User Management Guide](./basic-user-mgmt-guide.mdx)).
 2. Assign each user a role that permits enrollment (e.g., a role with end-entity issuance
    permissions configured in **Permissions**).
 3. If using an OIDC provider, configure it under **Administration** → **Identity** →
@@ -246,4 +246,4 @@ Automated systems authenticate via client certificate (mTLS) or CMP HMAC at enro
 - [Approval Profiles](../operations/administration/approval-workflows/approval-profiles.md)
 - [CMP Protocol Configuration](../operations/enrollment/protocols/cmp/protocol-configurations.mdx)
 - [EST Protocol Configuration](../operations/enrollment/protocols/est/protocol-configurations.mdx)
-- [Basic User Management Guide](./basic-user-mgmt-guide.md)
+- [Basic User Management Guide](./basic-user-mgmt-guide.mdx)
