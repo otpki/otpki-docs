@@ -23,6 +23,19 @@ Root CA  (Tier 1 — self-signed, offline)
 
 ---
 
+## Overview
+
+| Step | What Will Be Created |
+|---|---|
+| 1 | Soft DB KMS key storage configuration |
+| 2 | Three certificate profiles (Root CA, Policy CA, Issuing CA) |
+| 3 | Three ECDSA P-384 keys |
+| 4 | Self-signed Root CA |
+| 5 | Policy CA signed by Root CA |
+| 6 | Issuing CA signed by Policy CA |
+
+---
+
 ## Step 1: Create a Key Storage Configuration
 
 Before creating any keys, OTPKI needs at least one key storage configuration that tells it
@@ -34,10 +47,10 @@ where and how to store private key material.  For this guide we will use the bui
 3. Fill in the basic settings:
    - **Name** — e.g., `Soft DB KMS - Default`
    - **Description** — e.g., `Software key storage for PKI hierarchy keys`
-   - **Driver** — select `Soft DB KMS`
+   - **Key Storage Driver** — select `SOFTDBKMS`
 4. Optionally select an **Encryption Key** to encrypt stored private key material at rest.
-5. Set the configuration to **Active**.
-6. Click **Save**.
+5. Skip **Activation** parameters for the software based KMS.
+6. Click **Create Key Storage Config**.
 
 ---
 
@@ -54,22 +67,22 @@ Navigate to **Profiles** → **Certificate Profiles** and click **Create** for e
 |---|---|---|
 | Basic Settings | Name | `Root CA Profile` |
 | Basic Settings | Certificate Type | `Root CA` |
-| Basic Constraints | Include | ✅ Checked |
-| Basic Constraints | Max Path Length | `2` |
-| Validity Settings | Duration | `20 years` |
+| Basic Constraints | Enable | ✅ Checked |
+| Basic Constraints | Maximum Path Length | `2` |
+| Validity Settings | Validity Duration | `20 years` |
 | Key Identifiers | Include SKI | ✅ Checked |
 | Key Identifiers | Include AKI | ☐ Unchecked (self-signed) |
 | Key Usage | Enable Key Usage Extension | ✅ Checked |
-| Key Usage | Key Cert Sign | ✅ Checked |
-| Key Usage | CRL Sign | ✅ Checked |
 | Key Usage | Critical | ✅ Checked |
+| Key Usage | Cert Sign | ✅ Checked |
+| Key Usage | CRL Sign | ✅ Checked |
 
 :::tip
 Setting the **Max Path Length** to `2` on the Root CA allows two levels of subordinate CAs
 (the Policy CA and the Issuing CA) beneath it, conforming to RFC 5280.
 :::
 
-Click **Save**.
+Click **Create Certificate Profile**.
 
 ### 2b. Policy CA Profile
 
@@ -83,11 +96,11 @@ Click **Save**.
 | Key Identifiers | Include SKI | ✅ Checked |
 | Key Identifiers | Include AKI | ✅ Checked |
 | Key Usage | Enable Key Usage Extension | ✅ Checked |
-| Key Usage | Key Cert Sign | ✅ Checked |
-| Key Usage | CRL Sign | ✅ Checked |
 | Key Usage | Critical | ✅ Checked |
+| Key Usage | Cert Sign | ✅ Checked |
+| Key Usage | CRL Sign | ✅ Checked |
 
-Click **Save**.
+Click **Create Certificate Profile**.
 
 ### 2c. Issuing CA Profile
 
@@ -102,16 +115,16 @@ Click **Save**.
 | Key Identifiers | Include SKI | ✅ Checked |
 | Key Identifiers | Include AKI | ✅ Checked |
 | Key Usage | Enable Key Usage Extension | ✅ Checked |
-| Key Usage | Key Cert Sign | ✅ Checked |
-| Key Usage | CRL Sign | ✅ Checked |
 | Key Usage | Critical | ✅ Checked |
+| Key Usage | Cert Sign | ✅ Checked |
+| Key Usage | CRL Sign | ✅ Checked |
 
 :::tip
 Setting the **Max Path Length** to `0` on the Issuing CA ensures that no further CAs can be
 created below it, only end-entity certificates.
 :::
 
-Click **Save**.
+Click **Create Certificate Profile**.
 
 ---
 
@@ -124,25 +137,25 @@ each key below.
 
 | Field | Value |
 |---|---|
-| Name | `Root CA Key` |
+| Name | `RootCAKey` |
 | Description | `Private key for the Root CA` |
 | Key Type | `ECDSA P-384` |
-| Key Usage | `Signing and Verification` |
+| Key Usage | `SIGN_VERIFY` |
 | Key Storage Config | `Soft DB KMS - Default` *(created in Step 1)* |
 
-Click **Save**.
+Click **Create Key**.
 
 ### 3b. Policy CA Key
 
 | Field | Value |
 |---|---|
-| Name | `Policy CA Key` |
+| Name | `PolicyCAKey` |
 | Description | `Private key for the Policy CA` |
 | Key Type | `ECDSA P-384` |
-| Key Usage | `Signing and Verification` |
+| Key Usage | `SIGN_VERIFY` |
 | Key Storage Config | `Soft DB KMS - Default` |
 
-Click **Save**.
+Click **Create Key**.
 
 ### 3c. Issuing CA Key
 
@@ -151,10 +164,10 @@ Click **Save**.
 | Name | `Issuing CA Key` |
 | Description | `Private key for the Issuing CA` |
 | Key Type | `ECDSA P-384` |
-| Key Usage | `Signing and Verification` |
+| Key Usage | `SIGN_VERIFY` |
 | Key Storage Config | `Soft DB KMS - Default` |
 
-Click **Save**.
+Click **Create Key**.
 
 ---
 
@@ -166,13 +179,21 @@ Navigate to **Certificate Authorities** → **Certificate Authorities** and clic
 |---|---|
 | Name | `My Root CA` |
 | Description | `Tier 1 — self-signed root of trust` |
+| Key | `RootCAKey` *(created in Step 3a)* |
+| Signature Algorithm | *Choose accordingly based on key algorithm* |
 | Certificate Profile | `Root CA Profile` *(created in Step 2a)* |
-| Key | `Root CA Key` *(created in Step 3a)* |
-| Subject — Common Name | `My Root CA` |
-| Subject — Organization | *(your organization name)* |
-| Issuer | *(leave blank — this creates a self-signed certificate)* |
+| Parent CA | *(Leave blank as this is a self signed Root CA)* |
 
-Configure the **CRL** settings as appropriate for your environment, then click **Save**.
+Click on the **+ Certificate Template Field** option and select *Subject Dn Attributes* to
+add some Distinguished Name attributes. Click the **+** icon to add additional attributes 
+
+| Attribute Type | Value |
+|---|---|
+| Common Name | `My Root CA` |
+| Organization | *(your organization name)* |
+| ... | *(enter as many RDNs as you wish)* |
+
+Configure the **CRL** settings as appropriate for your environment, then click **Create CA**.
 
 The Root CA certificate is now self-signed and active.
 
@@ -186,13 +207,21 @@ Click **Create** again on the Certificate Authorities page.
 |---|---|
 | Name | `My Policy CA` |
 | Description | `Tier 2 — Policy CA signed by Root CA` |
+| Key | `PolicyCAKey` *(created in Step 3b)* |
+| Signature Algorithm | *Choose accordingly based on key algorithm* |
 | Certificate Profile | `Policy CA Profile` *(created in Step 2b)* |
-| Key | `Policy CA Key` *(created in Step 3b)* |
-| Subject — Common Name | `My Policy CA` |
-| Subject — Organization | *(your organization name)* |
-| Issuer | `My Root CA` *(created in Step 4)* |
+| Parent CA | `My Root CA` *(created in Step 4)* |
 
-Click **Save**.
+Click on the **+ Certificate Template Field** option and select *Subject Dn Attributes* to
+add some Distinguished Name attributes. Click the **+** icon to add additional attributes 
+
+| Attribute Type | Value |
+|---|---|
+| Common Name | `My Policy CA` |
+| Organization | *(your organization name)* |
+| ... | *(enter as many RDNs as you wish)* |
+
+Configure the **CRL** settings as appropriate for your environment, then click **Create CA**.
 
 OTPKI uses the Root CA to sign the Policy CA certificate.  The chain is now:
 `Root CA → Policy CA`.
@@ -207,13 +236,21 @@ Click **Create** one more time on the Certificate Authorities page.
 |---|---|
 | Name | `My Issuing CA` |
 | Description | `Tier 3 — Issuing CA signed by Policy CA` |
+| Key | `IssuingCAKey` *(created in Step 3c)* |
+| Signature Algorithm | *Choose accordingly based on key algorithm* |
 | Certificate Profile | `Issuing CA Profile` *(created in Step 2c)* |
-| Key | `Issuing CA Key` *(created in Step 3c)* |
-| Subject — Common Name | `My Issuing CA` |
-| Subject — Organization | *(your organization name)* |
-| Issuer | `My Policy CA` *(created in Step 5)* |
+| Parent CA | `My Policy CA` *(created in Step 5)* |
 
-Click **Save**.
+Click on the **+ Certificate Template Field** option and select *Subject Dn Attributes* to
+add some Distinguished Name attributes. Click the **+** icon to add additional attributes 
+
+| Attribute Type | Value |
+|---|---|
+| Common Name | `My Issuing CA` |
+| Organization | *(your organization name)* |
+| ... | *(enter as many RDNs as you wish)* |
+
+Configure the **CRL** settings as appropriate for your environment, then click **Create CA**.
 
 The full 3-tier chain is now established:
 `Root CA → Policy CA → Issuing CA`.
@@ -235,16 +272,6 @@ and associate it with **My Issuing CA** to begin issuing certificates.
 
 ---
 
-## Summary
-
-| Step | What Was Created |
-|---|---|
-| 1 | Soft DB KMS key storage configuration |
-| 2 | Three certificate profiles (Root CA, Policy CA, Issuing CA) |
-| 3 | Three ECDSA P-384 keys |
-| 4 | Self-signed Root CA |
-| 5 | Policy CA signed by Root CA |
-| 6 | Issuing CA signed by Policy CA |
 
 ## Next Steps
 
