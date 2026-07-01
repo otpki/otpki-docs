@@ -1,0 +1,109 @@
+---
+title: OCSP
+toc_min_heading_level: 2
+toc_max_heading_level: 2
+---
+
+import ocspIdAuthScope from './images/ocsp-id-auth-scope.png';
+import ocspHttpHandling from './images/ocsp-http-handling.png';
+import ocspCacheHeaders from './images/ocsp-cache-headers.png';
+import ocspSigningId from './images/ocsp-signing-id.png';
+import ocspNoncePolicy from './images/ocsp-nonce-policy.png';
+import ocspPreproduction from './images/ocsp-preproduction.png';
+import ocspResponseTiming from './images/ocsp-response-timing.png';
+import ocspLightweightMode from './images/ocsp-lightweight.png';
+import DocScreenshot from '@site/src/components/docs/DocScreenshot';
+
+# OCSP
+
+The following section outlines some general facts about OCSP (Online Certificate Status Protocol).  
+
+## Introduction 
+
+OCSP is a protocol by which clients can verify the validity of a digital certificate during the TLS handshake operation directly, without involving a static or stale CRL file.  This is done by sending an OCSP request to an OCSP Responder that requests the latest status of the certificate in question.  The OCSP Responder responds with a signed OCSP Response which includes the requested validity information for that cert.  The OCSP Responder certificate may be the CA which issued the certificate or it may be a delegate.  The delgated certificate must have the extended key usage (EKU) of `OCSPSigner` (OID: 1.3.6.1.5.5.7.3.9).  If the CA is signing the OCSP responses directly, the CA cert is implicitly trusted to sign for OCSP and therefore does not require this added EKU.
+
+The OCSP Protocol is defined by three RFCs:
+
+- [RFC 6960](https://datatracker.ietf.org/doc/html/rfc6960) - the core OCSP specification that defines the formats for requests and responses, as well as how they are transported via HTTP POST
+- [RFC 5019](https://datatracker.ietf.org/doc/html/rfc5019) - a specification for a lightweight implementation of OCSP which address scalability issues for OCSP at large scale, including the use of HTTP GET reuquests, caching, and CDNs
+- [RFC 6961](https://datatracker.ietf.org/doc/html/rfc6961) - defines a TLS extension for certificate status requests - used specifically for OCSP Stapling.
+
+Digital certificates carry the location URI of the OCSP Responder in their AIA (Authority Information Access) certificate extension.  The AIA field defines the URI that the OCSP Responder responds from.  With OT PKI, this information can either be defined by the CA as a specific URL, or it can be provided to the certificate by its Certificate Profile.  There are several options to determine how this field will be populated.  
+
+When an OCSP Protocol configuration is created against a working CA, the OT PKI service serves the OCSP Server at `https://<otpki-dns-name>/v1/ocsp/<Name>`.  Any VS instance that is connected to the OT PKI backplane will be synchronized with preproduced OCSP responses (if configured), which allows for geographically scaling the OCSP responders.  Additionally, if an organization-unique URL is desired for the OCSP URL endpoint, this can be done with a load balancer and carefully crafted DNS CNAME.
+
+## OCSP Protocol Definition
+
+Navigate to `Protocol Settings` -> `OCSP` to view the form to create a custom OCSP responder coniguration for one or more CAs.  With OT PKI, you can create one responder per CA or you can create one responder that services many CAs.  You can also create a delegate certificate that will sign the OCSP responses, if you're concerned with CA key exposure and scalability.
+
+### Identity and Authority Scope
+
+Name this OCSP configuration, select the issuing CAs it applies to, and optionally choose a delegated responder key.  The `Name` field must be URL-safe, as it is used to uniquely address the OCSP protocol instance.
+
+<DocScreenshot
+  alt="OCSP Identity and Authority Scope"
+  src={ocspIdAuthScope}
+/>
+
+### HTTP Request Handling
+
+Controls which OCSP HTTP methods and request shapes are accepted.
+
+<DocScreenshot
+  alt="OCSP HTTP Request Handling"
+  src={ocspHttpHandling}
+/>
+
+### HTTP Cache Headers
+
+Controls cache-control, ETag, and max-age behavior for the OCSP responses.
+
+<DocScreenshot
+  alt="OCSP HTTP Cache Headers"
+  src={ocspCacheHeaders}
+/>
+
+### Signing and Response Identity
+
+Controls responder ID format, accepted request hashes, response signing algorithm, and signer certificate inclusion.
+
+<DocScreenshot
+  alt="OCSP Signing and Response Identity"
+  src={ocspSigningId}
+/>
+
+### Nonce Policy
+
+Controls whether client nonces are required, forbidden, ignored, or echoed.
+
+<DocScreenshot
+  alt="OCSP Nonce Policy"
+  src={ocspNoncePolicy}
+/>
+
+### Preproduction
+
+Controls which OCSP responses are pre-produced and whether on-demand signing is allowed.
+
+<DocScreenshot
+  alt="OCSP Preproduction"
+  src={ocspPreproduction}
+/>
+
+### Response Timing
+
+Controls thisUpdate, producedAt, nextUpdate, jitter, and refresh timing.
+
+<DocScreenshot
+  alt="OCSP Response Timing"
+  src={ocspResponseTiming}
+/>
+
+### Extensions and Lightweight Mode
+
+Controls optional OCSP extension handling and scrict lightweight-profile behavior.
+
+<DocScreenshot
+  alt="OCSP Lightweight Mode"
+  src={ocspLightweightMode}
+/>
