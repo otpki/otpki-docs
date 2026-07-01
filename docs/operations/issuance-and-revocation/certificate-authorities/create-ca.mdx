@@ -24,7 +24,10 @@ A CA can be created within and managed by OTPKI with this form.  First a key and
   crop={24}
 />
 
-CA's also control CRL generation and those settings are found here as well.  See `CRLs` for more info.
+CA's also control CRL generation and those settings are found here as well.  See [CRLs](../../../validation/crl/) for more info.  
+The CA has the option to explicitly define the CDP (CRL Distribution Point) URIs as well as the OCSP URIs.  In the Certificate 
+profile, a user can force the use of the CA-defined values in their extensions, or they can be overridden and statically defined 
+directly from the profile.
 <DocScreenshot
   alt="CA Form CRL validity"
   src={caCreateBottomScreenshot}
