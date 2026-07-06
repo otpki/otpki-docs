@@ -1,7 +1,7 @@
 ---
 title: Wi-SUN FAN Configuration Guide
 section: guides
-sidebar_position: 4
+sidebar_position: 5
 source: guides/wi-sun-fan-1.1-guide
 description: Configure OTPKI to issue X.509 device certificates that conform to the Wi-SUN FAN 1.1 standard for IoT mesh network identity.
 toc_min_heading_level: 2

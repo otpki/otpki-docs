@@ -1,7 +1,7 @@
 ---
 title: C2PA PKI Configuration Guide
 section: guides
-sidebar_position: 3
+sidebar_position: 4
 description: Configure OTPKI to issue X.509 signing credentials that conform to the C2PA 2.x specification for content provenance and authenticity.
 toc_min_heading_level: 2
 toc_max_heading_level: 4

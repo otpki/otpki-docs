@@ -1,7 +1,7 @@
 ---
 title: Issuing CA with Dual Enrollment
 section: guides
-sidebar_position: 5
+sidebar_position: 6
 source: guides/issuing-ca-with-dual-enrollment
 description: Set up an issuing CA with OTPKI-managed keys and externally-issued certificates, then configure separate enrollment paths for human and automated entities.
 toc_min_heading_level: 2
