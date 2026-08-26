@@ -1,9 +1,0 @@
-{
-  "label": "ACME",
-  "link": {
-    "type": "doc",
-    "id": "operations/enrollment/protocols/acme/protocol-configurations"
-  },
-  "collapsible": true,
-  "collapsed": true
-}

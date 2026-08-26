@@ -14,12 +14,13 @@ The proxy is composed of pluggable **modules**. Every deployment registers `pkcs
 | HSM | `module_path` (vendor default) | Required `modules` |
 | --- | --- | --- |
 | SoftHSM v2 | `/usr/lib/softhsm/libsofthsm2.so` | `pkcs11.base` |
+| Securosys Primus HSM | `/usr/local/primus/lib/libprimusP11.so` |`pkcs11.base` |
+| Securosys CloudHSM | `/usr/local/primus/lib/libprimusP11.so`  | `pkcs11.base` |
 | Utimaco | `/opt/utimaco/lib/libcs_pkcs11_R3.so` | `pkcs11.base` |
 | Utimaco QuantumProtect | `/opt/utimaco/lib/libcs_pkcs11_R3.so` | `pkcs11.base`, `pkcs11.utimaco.pqc` |
 | Entrust nShield | `/opt/nfast/toolkits/pkcs11/libcknfast.so` | `pkcs11.base` |
 | Thales Luna | `/usr/local/luna/lib/libCryptoki2.so` | `pkcs11.base` |
 | Thales ProtectServer 3 | `/opt/safenet/protecttoolkit7/ptk/lib/libcryptoki.so` | `pkcs11.base` |
-<!-- | Securosys Primus | `/usr/local/primus/lib/libprimusP11.so` | `pkcs11.base` | -->
 
 `module_path` is the absolute path on the proxy host to the vendor's PKCS#11 `.so` / `.dylib`. It *must* exist on the machine running the proxy.
 
@@ -47,6 +48,24 @@ hsm_configs:
     label: "SoftHSMToken"
     default: true
 ```
+
+### Securosys Primus HSM / CloudHSM
+
+```yaml
+module_path: /usr/local/primus/lib/libprimusP11.so
+listen_address: ":8051"
+
+modules:
+  pkcs11.base:
+
+hsm_configs:
+  - id: primus
+    label: "Securosys HSM"
+    # slot_id: 0
+    default: true
+```
+
+> Securosys HSMs strictly abide by the PKCS#11 v3.2 standard as it relates to Post-Quantum Cryptopgraphic mechanisms, so no extraneous vendor-defined library is required.
 
 ### Utimaco
 
