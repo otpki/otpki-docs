@@ -96,9 +96,33 @@ const config: Config = {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
-    metadata: [
-      {name:"algolia-site-verification", content:"61BD0E30B4CF2344"},
-    ],
+    algolia: {
+      // The application ID provided by Algolia
+      appId: 'GXOGKO5A67',
+
+      // Public API key (it is safe to commit it)
+      apiKey: '90eafa10ac7f63845a78f6b364009af5',
+
+      indexName: 'docs_otpki_com_gxogko5a67_pages',
+
+      // Optional: see doc section below
+      contextualSearch: true,
+
+      // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+      replaceSearchResultPathname: {
+        from: '/docs/', // or as RegExp: /\/docs\//
+        to: '/',
+      },
+
+      // Optional: Algolia search parameters
+      searchParameters: {},
+
+      // Optional: path for search page that enabled by default (`false` to disable it)
+      searchPagePath: 'search',
+
+      // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
+      insights: false,
+    },
   } satisfies Preset.ThemeConfig,
 };
 

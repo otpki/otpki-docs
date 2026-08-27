@@ -52,7 +52,6 @@ The Identity Providers page lists every OIDC provider configured in OTPKI. The l
 
 Use the **Create** button to register a new OIDC provider. You will need the provider's issuer URL, client ID, and client secret, plus the redirect URL that OTPKI will use after sign-in.
 
-<!-- Side by side... the form is really long -->
 <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', alignItems: 'start'}}>
   <img src={require('./images/identity-providers-form-top.png').default} alt="Create Identity Provider form (top half)" style={{width: '100%', height: 'auto'}} />
   <img src={require('./images/identity-providers-form-bot.png').default} alt="Create Identity Provider form (bottom half)" style={{width: '100%', height: 'auto'}} />
