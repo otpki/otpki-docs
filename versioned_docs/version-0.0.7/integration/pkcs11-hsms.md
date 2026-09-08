@@ -65,7 +65,7 @@ hsm_configs:
     default: true
 ```
 
-> Securosys HSMs strictly abide by the PKCS#11 v3.2 standard as it relates to Post-Quantum Cryptopgraphic mechanisms, so no extraneous vendor-defined library is required.
+> Securosys HSMs strictly abide by the PKCS#11 v3.2 standard as it relates to Post-Quantum Cryptographic mechanisms, so no extraneous vendor-defined library is required.
 
 ### Utimaco
 
